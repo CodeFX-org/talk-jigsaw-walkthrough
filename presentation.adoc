@@ -1,0 +1,570 @@
+= Jigsaw Walkthrough
+Nicolai Parlog / @nipafx
+:backend: revealjs
+:revealjs_center: true
+:revealjs_theme: nipa-day
+:revealjs_history: true
+:revealjs_progress: false
+:revealjs_mouseWheel: true
+:revealjs_parallaxBackgroundImage: images/puzzle-people.jpg
+:revealjs_parallaxBackgroundSize: 3246px 1237px
+:revealjs_transition: slide
+
+++++
+<link rel="stylesheet" href="highlight.js/9.2.0.monokai-sublime.min.css">
+<script src="highlight.js/9.2.0.min.js"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+	hljs.configure({tabReplace: '    '})
+</script>
+++++
+
+
+////
+////
+
+// ################################### //
+// I M P E D E N C E   M I S M A T C H //
+// ################################### //
+
+
+== Impedance Mismatch
+
+++++
+<h3>Where the JVM disagrees with us</h3>
+++++
+
+=== How we think about software
+
+* a system of interacting parts
+* parts have names, dependencies, APIs
+* creates a graph
+* helps tools and devs to ... the system
+** dissect
+** analyze
+** reason about
+** work with
+
+
+[data-background="/home/nipa/docs/talks/jigsaw-walkthrough/images/ball-of-mud-2.jpg"]
+=== How the JVM thinks about it
+
+* parts are packaged as JARs
+* to the JVM JARs
+** have no names
+** dependencies are unexpressed
+** have no coherent surface
+* JVM rolls them into one big ball of mud
+
+[NOTE.speaker]
+--
+* class loaders do a linear scan
+** performance
+** unreliable results
+* the graph is gone
+--
+
+
+[data-background="images/jar-hell.jpg"]
+=== Consequences
+
+* unexpressend dependencies
+* transitive dependencies
+* shadowing
+* version conflicts
+* complex class loading
+
+This is known as http://blog.codefx.org/java/jar-hell/[JAR hell]!
+
+* unsecure
+* slow class loading
+* maintenance nightmare
+
+
+
+// ########################### //
+// P R O J E C T   J I G S A W //
+// ########################### //
+
+
+[data-background="images/puzzle-cubed.jpg"]
+== Project Jigsaw
+
+++++
+<h3>Teaching the JVM about that graph</h3>
+++++
+
+
+=== Goals
+
+* *Reliable Configuration*
+* *Strong Encapsulation*
+* Scalable Systems (esp. the JDK)
+* Security
+* Performance
+* maintainability
+
+
+=== Means
+
+Introducing modules, which
+
+* have a name
+* express dependencies
+* encapsulate internals
+
+Everything else follows from here!
+
+
+=== A word on compatibility
+
+Some internal changes can
+http://blog.codefx.org/java/dev/how-java-9-and-project-jigsaw-may-break-your-code/[break existing code]!
+
+* Strong Encapsulation
+** disappearance of most internal APIs (http://openjdk.java.net/jeps/261[JEP 261])
+* Modular Run-Time Images (http://openjdk.java.net/jeps/220[JEP 220])
+** new JDK/JRE layout
+** unavailability of internal JARs (e.g. `rt.jar`)
+** new URL schema for runtime image content
+** removal of Endorsed Standards Override Mechanism
+** removal of Extension Mechanism
+
+
+=== Concepts & Features
+
+++++
+<ul>
+	<li><p>Modules, Readability, Accessibility, Module Graph</p></li>
+	<li class="fragment dim" data-fragment-index="1"><p>Implied Readability, Qualified Exports</p></li>
+	<li><p>Modular JARs, Module Path</p></li>
+	<li><p>Unnamed Modules, Automatic Modules</p></li>
+	<li class="fragment dim" data-fragment-index="1"><p>Services</p></li>
+	<li class="fragment dim" data-fragment-index="1"><p>Reflection, Layers</p></li>
+	<li class="fragment dim" data-fragment-index="1"><p>Runtime Images</p></li>
+</ul>
+++++
+
+
+
+// ############# //
+// M O D U L E S //
+// ############# //
+
+
+[data-background="images/puzzle-piece-green.jpg"]
+== Modules
+
+++++
+<h3>Building Blocks</h3>
+++++
+
+These are the nodes in our graph.
+
+
+=== Definition
+
+[quote,'http://openjdk.java.net/projects/jigsaw/spec/sotms/#modules[State Of The Module System]']
+____
+A module is a _named_, self-describing collection of code and data. [...]
+
+To control how its code refers to types in other modules,
+ a module declares which other modules it _requires_ [...].
+To control how code in other modules refers to types in its packages,
+ a module declares which of those packages it _exports_.
+____
+
+=== Summary
+
+Modules:
+
+* have a unique name
+* express their dependencies
+* export specific packages +
+(and hide the rest)
+
+
+=== Implementation
+
+* Modules are JARs with a `module-info.class` +
+(aka "Modular JAR")
+* gets generated from `module-info.java`:
++
+[source,java]
+----
+module <module_name> {
+	requires <other_module>;
+	exports <api_package>;
+}
+----
+* this is called a Module Declaration +
+or a Module Descriptor.
+
+
+
+// ##################### //
+// R E A D A B I L I T Y //
+// ##################### //
+
+
+[data-background="images/puzzle-pieces-put-together.jpg"]
+== Readability
+
+++++
+<h3>Putting the pieces together</h3>
+++++
+
+Readability brings edges into our graph.
+
+It is the basis for *Reliable Configuration*.
+
+
+=== Definition
+
+[quote,'http://openjdk.java.net/projects/jigsaw/spec/sotms/#readability[State Of The Module System]']
+____
+When _one module depends_ directly upon another [...]
+ then code in the first module will be able to refer to types in the second module.
+We therefore say that the first module _reads_ the second
+ or, equivalently, that the second module is _readable_ by the first.
+____
+
+
+=== Summary
+
+For two modules `A` and `B` with +
+[source,java]
+----
+module A {
+	requires B;
+}
+----
+we say
+
+* `A` requires `B`
+* `A` depends on `B`
+* `A` reads `B`
+* `B` is readable by `A`
+
+
+=== Reliable Configuration
+
+Java will only compile/launch when
+
+* every dependency is fulfilled by one module
+* no two modules read each other ("no cycles")
+* every module reads at most one module +
+defining a given package ("no split packages")
+
+
+
+// ######################### //
+// A C C E S S I B I L I T Y //
+// ######################### //
+
+
+[data-background="images/iceberg.jpg"]
+== Accessibility
+
+++++
+<h3>Hiding internals</h3>
+++++
+
+Accessibility governs which types a module can see.
+
+It builds on top of Readability.
+
+It is the basis for *Strong Encapsulation*.
+
+
+=== Definition
+
+[quote,'http://openjdk.java.net/projects/jigsaw/spec/sotms/#accessibility[State Of The Module System]']
+____
+[T]he public types in a package in one module [are] _accessible_ by code in some other module
+ only when the first _module is readable_ by the second module [...]
+ and the first module _exports that package_.
+____
+
+
+=== Summary
+
+A type in one module is only accessible +
+by code in another module if
+
+* the type is public
+* the package is exported
+* the second module reads the first
+
+
+=== Strong Encapsulation
+
+* `public` is no longer public
+* even reflection http://mail.openjdk.java.net/pipermail/jpms-spec-observers/2015-September/000122.html[doesn't work]
+* command line has a flag (`-XaddExports`)
+
+* great boost for maintainability
+* also the major reason for community unrest
+* it looks like critical APIs will survive until Java 10 +
+(e.g. `sun.misc.Unsafe` -- see http://openjdk.java.net/jeps/260[JEP 260])
+
+
+
+// ############# //
+// E X A M P L E //
+// ############# //
+
+
+[data-background="images/advent-calendar.jpg"]
+== Jigsaw Advent Calendar
+
+++++
+<h3>A running example</h3>
+++++
+
+All examples are based on this toy project.
+
+Find it https://github.com/CodeFX-org/demo-jigsaw-advent-calendar[on GitHub]!
+
+
+=== Structure
+
+// with `Main` (right to left): http://yuml.me/edit/dc231796
+// without `Main`, huge: http://yuml.me/edit/64cd5858
+
+image::http://yuml.me/64cd5858[]
+
+[source,java]
+----
+public static void main(String[] args) {
+	List<SurpriseFactory> factories = asList(
+			new ChocolateFactory(), new QuoteFactory());
+	Calendar calendar = Calendar.create(factories);
+	System.out.println(calendar.asText());
+}
+----
+
+
+=== Command Line (JAR)
+
+[source,bash]
+----
+# compile
+javac -d classes/advent ${.java}
+# package
+jar -cfm jars/advent.jar ${.class}
+# run
+java -jar jars/advent.jar
+----
+
+
+=== A single module
+
+++++
+<h4>Modularization</h4>
+++++
+
+// http://yuml.me/edit/f3ed6b1a
+
+image::http://yuml.me/f3ed6b1a[]
+
+[source,java]
+----
+module advent {
+	// java.base is implicitly required
+	// requires no other modules
+	// exports no API
+}
+----
+
+++++
+<p class="fragment current-visible" data-fragment-index="1">(Boring...)</p>
+++++
+
+
+=== A single module
+
+++++
+<h4>Readability & Accessibility</h4>
+++++
+
+// http://yuml.me/edit/6ef759bc
+
+image::http://yuml.me/6ef759bc[]
+
+
+=== A single module
+
+++++
+<h4>Command Line</h4>
+++++
+
+[source,bash]
+----
+# compile with module-info.java:
+javac -d classes/advent ${.java}
+# package with module-info.class
+#	and specify main class:
+jar -c --file=mods/advent.jar
+	--main-class=advent.Main
+	${.class}
+# run by specifying a module path
+#	and a module to run (by name):
+java -mp mods -m advent
+----
+
+
+=== Multiple Modules
+
+// first image taken from "Structure"
+++++
+<div class="imageblock" style="">
+	<div class="content"><img src="http://yuml.me/64cd5858" alt="64cd5858" style="margin: 0; width:80%">
+</div></div>
+<div class="imageblock fragment current-visible" data-fragment-index="0">
+	<div class="content"><img src="http://yuml.me/b2e21fbf" alt="b2e21fbf" style="margin: 0;"></div>
+</div>
+++++
+
+
+=== Multiple Modules
+
+// taken from previous slide
+image::http://yuml.me/b2e21fbf[]
+
+++++
+<div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module surprise {
+	<span class="hljs-comment">// requires no other modules</span>
+	exports org.codefx.demo.advent.surprise;
+}</code></pre></div></div>
+<div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module calendar {
+	requires surprise;
+	exports org.codefx.demo.advent.calendar;
+}</code></pre></div></div>
+<div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module factories {
+	requires surprise;
+	exports org.codefx.demo.advent.factories;
+}</code></pre></div></div>
+<div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module main {
+	requires calendar;
+	requires factories;
+	requires surprise;
+}</code></pre></div></div>
+++++
+
+
+=== Multiple Modules
+
+++++
+<h4>Compilation & Packaging</h4>
+++++
+
+[source,bash]
+----
+# surprise
+javac -d classes/surprise ${.java}
+jar -c --file=mods/surprise.jar ${.class}
+# calendar
+javac -mp mods -d classes/calendar ${.java}
+jar -c --file=mods/calendar.jar ${.class}
+# factories
+javac -mp mods -d classes/factories ${.java}
+jar -c --file=mods/factories.jar ${.class}
+# main
+javac -mp mods -d classes/advent ${.java}
+jar -c --file=mods/advent.jar
+	--main-class=org.codefx.demo.advent.Main
+	${.java}
+----
+
+
+=== Multiple Modules
+
+++++
+<h4>Execution</h4>
+++++
+
+[source,bash]
+----
+java -mp mods -m advent
+----
+
+////
+
+== History ==
+
+
+=== Distant Past ...
+
+2005/2006:: https://jcp.org/en/jsr/detail?id=277[JSR 277] and https://jcp.org/en/jsr/detail?id=294[JSR 294] start talking about modularizing the JDK
+2008::
+** JSR 277 is abandoned due to complexity
+** JSR 294 becomes the vehicle for the new Project Jigsaw:
++
+*** to create a simple module system
+*** just for the JDK
+*** "in the next year or so" [http://mreinhold.org/blog/jigsaw[Reinhold]]
+2010:: Oracle acquires Sun; Jigsaw is halted
+2011:: demand for a standard Java module system is reestablished
+
+[NOTE.speaker]
+--
+* December 2006: Java 6
+* July 2011: Java 7
+* March 2014: Java 8
+--
+
+
+=== ... Past ...
+
+2011::
+** demand for a standard Java module system is reestablished
+** requirements are formulated
+** Jigsaw is chosen as the vehicle
+** gets fully staffed
+** enters "exploratory phase"
+2012::
+** Jigsaw postponed to Java 9
+** Compact Profiles fill the gap (http://openjdk.java.net/jeps/161[JEP 161])
+** modularization is prepared in Java 8 (http://openjdk.java.net/jeps/162[JEP 162])
+
+[NOTE.speaker]
+--
+* December 2006: Java 6
+* July 2011: Java 7
+* March 2014: Java 8
+--
+
+
+=== ... Present ...
+
+2014::
+** exploratory phase ends with a plethora of JEPs:
+*** http://openjdk.java.net/jeps/200[JEP 200]: define a modular structure for the JDK
+*** http://openjdk.java.net/jeps/201[JEP 201]: reorganize source
+*** http://openjdk.java.net/jeps/220[JEP 220]: create run-time images for modules
+*** http://openjdk.java.net/jeps/260[JEP 260]: encapsulate (most) internal APIs
+*** http://openjdk.java.net/jeps/261[JEP 261]: implement module system
+** all collected under https://www.jcp.org/en/jsr/detail?id=376[JSR 376: Java Platform Module System]
+2015 (TODO when exactly?)::
+JDK-9-with-Jigsaw https://jdk9.java.net/jigsaw/[early access builds] contain all relevant changes to experiment with the module system
+
+
+=== ... Future
+
+2016::
+** *May*: JDK 9: feature complete
+** *June*: JSR 376: public review
+** *December*: JSR 376: final draft
+2017::
+** *January*: JDK 9: final release candidate
+** *March*:
+*** JSR 376: final release
+*** JDK 9: general availability
+
+
+== Image Credits
+
+TODO
+
+////
