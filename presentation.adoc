@@ -46,7 +46,7 @@ Nicolai Parlog / @nipafx
 ** work with
 
 
-[data-background="/home/nipa/docs/talks/jigsaw-walkthrough/images/ball-of-mud-2.jpg"]
+[data-background="images/ball-of-mud-2.jpg"]
 === How the JVM thinks about it
 
 * parts are packaged as JARs
