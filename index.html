@@ -1,10 +1,32 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Nicolai Parlog / @nipafx"><title>Jigsaw Walkthrough</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="reveal.js/css/theme/nipa-day.css" id="theme"><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet"><script type="text/javascript">document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section><h1>Jigsaw Walkthrough</h1><link rel="stylesheet" href="highlight.js/9.2.0.monokai-sublime.min.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Nicolai Parlog / @nipafx"><title>Jigsaw Walkthrough</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="reveal.js/css/theme/nipa-day.css" id="theme"><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet"><script>document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section><h1>Jigsaw Walkthrough</h1><link rel="stylesheet" href="highlight.js/9.2.0.monokai-sublime.min.css">
 <script src="highlight.js/9.2.0.min.js"></script>
 <script>
 	hljs.initHighlightingOnLoad();
 	hljs.configure({tabReplace: '    '})
+</script>
+<footer>
+	<div><p>
+		<a href="http://codefx.org">Nicolai Parlog</a>
+		<img src="images/logo-nipa.png" class="logo">
+		<a href="https://twitter.com/nipafx" title="Nicolai on Twitter">@nipafx</a>
+	</p></div>
+	<div><p>
+		<a href="http://disy.net">Disy Informationssysteme GmbH</a>
+		<img src="images/logo-disy.png" class="logo">
+		<a href="https://twitter.com/disynet" title="Disy on Twitter">@Disy</a>
+	</p></div>
+	<div><p>
+		<a href="http://jug-karlsruhe.de/">JUG Karlsruhe</a>
+		<img src="images/logo-jug-ka.png" class="logo">
+		<a href="https://twitter.com/jugka" title="JUG Karlsruhe on Twitter">@jugka</a>
+	</p></div>
+</footer>
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		document.body.appendChild(document.querySelector('footer'));
+	})
 </script><p><small>Nicolai Parlog / @nipafx</small></p></section>
-<section><section id="_impedance_mismatch"><h2>Impedance Mismatch</h2><h3>Where the JVM disagrees with us</h3></section><section id="_how_we_think_about_software"><h2>How we think about software</h2><div class="ulist"><ul><li><p>a system of interacting parts</p></li><li><p>parts have names, dependencies, APIs</p></li><li><p>creates a graph</p></li><li><p>helps tools and devs to &#8230;&#8203; the system</p><div class="ulist"><ul><li><p>dissect</p></li><li><p>analyze</p></li><li><p>reason about</p></li><li><p>work with</p></li></ul></div></li></ul></div></section><section id="_how_the_jvm_thinks_about_it" data-background="/home/nipa/docs/talks/jigsaw-walkthrough/images/ball-of-mud-2.jpg"><h2>How the JVM thinks about it</h2><div class="ulist"><ul><li><p>parts are packaged as JARs</p></li><li><p>to the JVM JARs</p><div class="ulist"><ul><li><p>have no names</p></li><li><p>dependencies are unexpressed</p></li><li><p>have no coherent surface</p></li></ul></div></li><li><p>JVM rolls them into one big ball of mud</p></li></ul></div>
+<section><section id="_impedance_mismatch"><h2>Impedance Mismatch</h2><h3>Where the JVM disagrees with us</h3></section><section id="_how_we_think_about_software"><h2>How we think about software</h2><div class="ulist"><ul><li><p>a system of interacting parts</p></li><li><p>parts have names, dependencies, APIs</p></li><li><p>creates a graph</p></li><li><p>helps tools and devs to &#8230;&#8203; the system</p><div class="ulist"><ul><li><p>dissect</p></li><li><p>analyze</p></li><li><p>reason about</p></li><li><p>work with</p></li></ul></div></li></ul></div></section><section id="_how_the_jvm_thinks_about_it" data-background="images/ball-of-mud-2.jpg"><h2>How the JVM thinks about it</h2><div class="ulist"><ul><li><p>parts are packaged as JARs</p></li><li><p>to the JVM JARs</p><div class="ulist"><ul><li><p>have no names</p></li><li><p>dependencies are unexpressed</p></li><li><p>have no coherent surface</p></li></ul></div></li><li><p>JVM rolls them into one big ball of mud</p></li></ul></div>
 <aside class="notes"><div class="ulist"><ul><li><p>class loaders do a linear scan</p><div class="ulist"><ul><li><p>performance</p></li><li><p>unreliable results</p></li></ul></div></li><li><p>the graph is gone</p></li></ul></div></aside></section><section id="_consequences" data-background="images/jar-hell.jpg"><h2>Consequences</h2><div class="ulist"><ul><li><p>unexpressend dependencies</p></li><li><p>transitive dependencies</p></li><li><p>shadowing</p></li><li><p>version conflicts</p></li><li><p>complex class loading</p></li></ul></div>
 <div class="paragraph"><p>This is known as <a href="http://blog.codefx.org/java/jar-hell/">JAR hell</a>!</p></div>
 <div class="ulist"><ul><li><p>unsecure</p></li><li><p>slow class loading</p></li><li><p>maintenance nightmare</p></li></ul></div></section></section>
@@ -85,6 +107,7 @@ java -mp mods -m advent</code></pre></div></div></section><section id="_multiple
 <div class="imageblock fragment current-visible" data-fragment-index="0">
 	<div class="content"><img src="http://yuml.me/b2e21fbf" alt="b2e21fbf" style="margin: 0;"></div>
 </div></section><section id="_multiple_modules_2"><h2>Multiple Modules</h2><div class="imageblock" style=""><div class="content"><img src="http://yuml.me/b2e21fbf" alt="b2e21fbf"></div></div>
+<div style="height: 500px;">
 <div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module surprise {
 	<span class="hljs-comment">// requires no other modules</span>
 	exports org.codefx.demo.advent.surprise;
@@ -101,7 +124,8 @@ java -mp mods -m advent</code></pre></div></div></section><section id="_multiple
 	requires calendar;
 	requires factories;
 	requires surprise;
-}</code></pre></div></div></section><section id="_multiple_modules_3"><h2>Multiple Modules</h2><h4>Compilation & Packaging</h4>
+}</code></pre></div></div>
+</div></section><section id="_multiple_modules_3"><h2>Multiple Modules</h2><h4>Compilation & Packaging</h4>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="bash language-bash"># surprise
 javac -d classes/surprise ${.java}
 jar -c --file=mods/surprise.jar ${.class}
@@ -116,7 +140,7 @@ javac -mp mods -d classes/advent ${.java}
 jar -c --file=mods/advent.jar
 	--main-class=org.codefx.demo.advent.Main
 	${.java}</code></pre></div></div></section><section id="_multiple_modules_4"><h2>Multiple Modules</h2><h4>Execution</h4>
-<div class="listingblock"><div class="content"><pre class="highlight"><code class="bash language-bash">java -mp mods -m advent</code></pre></div></div></section></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script type="text/javascript">// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="bash language-bash">java -mp mods -m advent</code></pre></div></div></section></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
 Reveal.initialize({
   // Display controls in the bottom right corner
   controls: true,
