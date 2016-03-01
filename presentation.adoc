@@ -426,13 +426,16 @@ java -mp mods -m advent
 </div>
 ++++
 
-
 === Multiple Modules
 
 // taken from previous slide
 image::http://yuml.me/b2e21fbf[]
 
+// The outer div's height must be specified explicitly so that vertical space is reserved
+// for the non-displayed fragments.
+// In this case, because it is the last element on the slide, we can pick infinity.
 ++++
+<div style="height: 500px;">
 <div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module surprise {
 	<span class="hljs-comment">// requires no other modules</span>
 	exports org.codefx.demo.advent.surprise;
@@ -450,6 +453,7 @@ image::http://yuml.me/b2e21fbf[]
 	requires factories;
 	requires surprise;
 }</code></pre></div></div>
+</div>
 ++++
 
 
