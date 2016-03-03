@@ -129,7 +129,7 @@ This is known as http://blog.codefx.org/java/jar-hell/[JAR hell]!
 * Scalable Systems (esp. the JDK)
 * Security
 * Performance
-* maintainability
+* Maintainability
 
 
 === Means
@@ -143,13 +143,19 @@ Introducing modules, which
 Everything else follows from here!
 
 
-=== A word on compatibility
+=== Compatibility I
 
 Some internal changes can
 http://blog.codefx.org/java/dev/how-java-9-and-project-jigsaw-may-break-your-code/[break existing code]!
 
 * Strong Encapsulation
 ** disappearance of most internal APIs (http://openjdk.java.net/jeps/261[JEP 261])
+** it looks like critical APIs will survive until Java 10 +
+(e.g. `sun.misc.Unsafe` -- see http://openjdk.java.net/jeps/260[JEP 260])
+** use https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html[`jdeps`] (preferably from JDK 9)
+
+=== Compatibility II
+
 * Modular Run-Time Images (http://openjdk.java.net/jeps/220[JEP 220])
 ** new JDK/JRE layout
 ** unavailability of internal JARs (e.g. `rt.jar`)
@@ -203,7 +209,7 @@ ____
 
 === Summary
 
-Modules:
+Modules
 
 * have a unique name
 * express their dependencies
@@ -214,7 +220,7 @@ Modules:
 === Implementation
 
 * Modules are JARs with a `module-info.class` +
-(aka "Modular JAR")
+(aka *Modular JAR*)
 * gets generated from `module-info.java`:
 +
 [source,java]
@@ -224,8 +230,8 @@ module <module_name> {
 	exports <api_package>;
 }
 ----
-* this is called a Module Declaration +
-or a Module Descriptor.
+* this is called a *Module Declaration* or a +
+*Module Descriptor*
 
 
 
@@ -272,6 +278,11 @@ we say
 * `A` depends on `B`
 * `A` reads `B`
 * `B` is readable by `A`
+
+[NOTE.speaker]
+--
+* Implied Readability also leads to "A reads B"
+--
 
 
 === Reliable Configuration
@@ -365,9 +376,9 @@ image::http://yuml.me/64cd5858[]
 ----
 public static void main(String[] args) {
 	List<SurpriseFactory> factories = asList(
-			new ChocolateFactory(), new QuoteFactory());
+			new ChocolateF_(), new QuoteF_());
 	Calendar calendar = Calendar.create(factories);
-	System.out.println(calendar.asText());
+	println(calendar.asText());
 }
 ----
 
@@ -377,12 +388,19 @@ public static void main(String[] args) {
 [source,bash]
 ----
 # compile
-javac -d classes/advent ${.java}
+javac -d classes/advent ${*.java}
 # package
-jar -cfm jars/advent.jar ${.class}
+jar -cfm jars/advent.jar ${*.class, *.mf}
 # run
 java -jar jars/advent.jar
 ----
+
+[NOTE.speaker]
+--
+* explain manifest
+* add dependencies to the class path
+* works on JDK 9 as is
+--
 
 
 === A single module
@@ -408,6 +426,11 @@ module advent {
 <p class="fragment current-visible" data-fragment-index="1">(Boring...)</p>
 ++++
 
+[NOTE.speaker]
+--
+* talk about `java.base`
+--
+
 
 === A single module
 
@@ -429,16 +452,21 @@ image::http://yuml.me/6ef759bc[]
 [source,bash]
 ----
 # compile with module-info.java:
-javac -d classes/advent ${.java}
+javac -d classes/advent ${*.java}
 # package with module-info.class
 #	and specify main class:
 jar -c --file=mods/advent.jar
 	--main-class=advent.Main
-	${.class}
+	${*.class}
 # run by specifying a module path
 #	and a module to run (by name):
 java -mp mods -m advent
 ----
+
+[NOTE.speaker]
+--
+* explain module path
+--
 
 
 === Multiple Modules
@@ -493,19 +521,18 @@ image::http://yuml.me/b2e21fbf[]
 [source,bash]
 ----
 # surprise
-javac -d classes/surprise ${.java}
-jar -c --file=mods/surprise.jar ${.class}
-# calendar
-javac -mp mods -d classes/calendar ${.java}
-jar -c --file=mods/calendar.jar ${.class}
-# factories
-javac -mp mods -d classes/factories ${.java}
-jar -c --file=mods/factories.jar ${.class}
+javac -d classes/surprise ${*.java}
+jar -c --file=mods/surprise.jar ${*.class}
+# calendar & factories
+javac -mp mods -d classes/calendar ${*.java}
+jar -c --file=mods/calendar.jar ${*.class}
+javac -mp mods -d classes/factories ${*.java}
+jar -c --file=mods/factories.jar ${*.class}
 # main
-javac -mp mods -d classes/advent ${.java}
+javac -mp mods -d classes/advent ${*.java}
 jar -c --file=mods/advent.jar
 	--main-class=org.codefx.demo.advent.Main
-	${.java}
+	${*.java}
 ----
 
 
@@ -519,6 +546,15 @@ jar -c --file=mods/advent.jar
 ----
 java -mp mods -m advent
 ----
+
+
+[data-background="images/question-mark.jpg"]
+== Now What?
+
+* what could possibly go wrong?
+* what happens then?
+* what about migration?
+* ...?
 
 ////
 
