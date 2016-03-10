@@ -1,18 +1,19 @@
 = Jigsaw Walkthrough
-Nicolai Parlog / @nipafx
 :backend: revealjs
 :revealjs_center: true
 :revealjs_theme: nipa-day
 :revealjs_controls: false
 :revealjs_history: true
 :revealjs_progress: false
-:revealjs_parallaxBackgroundImage: images/puzzle-people.jpg
+:revealjs_parallaxBackgroundImage: images/disy-landscape.jpg
 :revealjs_parallaxBackgroundSize: 3246px 1237px
 :revealjs_transition: slide
 :revealjs_backgroundTransition: fade
 
+Nicolai Parlog / @nipafx
+
 ++++
-<link rel="stylesheet" href="highlight.js/9.2.0.monokai-sublime.min.css">
+<link rel="stylesheet" href="highlight.js/9.2.0.mono-blue.css">
 <script src="highlight.js/9.2.0.min.js"></script>
 <script>
 	hljs.initHighlightingOnLoad();
@@ -23,7 +24,7 @@ Nicolai Parlog / @nipafx
 // Just adding a footer does not work because reveal.js puts it into the slides
 // and we couldn't get it out via CSS. So we move it via JavaScript.
 ++++
-<footer>
+<footer style="display: none;">
 	<div><p>
 		<a href="http://codefx.org">Nicolai Parlog</a>
 		<img src="images/logo-nipa.png" class="logo">
