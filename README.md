@@ -20,7 +20,7 @@ Some amlagam of
 * `gh-pages`
 	* `reveal.js` (submodule ~>
 		[CodeFX-org/reveal.js; nipa](https://github.com/CodeFX-org/reveal.js/tree/nipa))
-	* `highlight.js` (downloaded from [highlightjs.org](https://highlightjs.org/) and [source](https://github.com/isagalaev/highlight.js/tree/master/src/styles))
+	* `highlight.js` (downloaded from [highlightjs.org](https://highlightjs.org/download/) and [source](https://github.com/isagalaev/highlight.js/tree/master/src/styles))
 	* presentation in HTML
 
 After checkout, the `gh-pages` branch should be added as a worktree to `master`:
