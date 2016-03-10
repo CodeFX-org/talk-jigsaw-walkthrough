@@ -19,7 +19,8 @@
 .hljs-doctag,
 .hljs-name,
 .hljs-strong {
-  font-weight: bold;
+  color: #0048ab;
+  font-weight: bold !important;
 }
 
 .hljs-comment {
