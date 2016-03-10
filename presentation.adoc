@@ -62,19 +62,43 @@ Nicolai Parlog / @nipafx
 <h3>Where the JVM disagrees with us</h3>
 ++++
 
-=== How we think about software
+[data-background="images/binary-code.jpg"]
+=== How do you think about Software?
 
-* a system of interacting parts
-* parts have names, dependencies, APIs
+++++
+<h3>What is it made of?</h3>
+++++
+
+[NOTE.speaker]
+--
+* "think about your favorite project"
+* "or about one you're being paid for"
+--
+
+
+[data-background="images/graph.png"]
+=== How I think about Software
+
+* interacting parts
+* parts have
+** names
+** dependencies
+** capabilities
 * creates a graph
-* helps tools and devs to ... the system
+
+[NOTE.speaker]
+--
+* helps tools and devs to
 ** dissect
 ** analyze
 ** reason about
 ** work with
+* Maven, jdeps
+--
 
 
 [data-background="images/ball-of-mud-2.jpg"]
+[data-transition="slide-in none-out"]
 === How the JVM thinks about it
 
 * parts are packaged as JARs
@@ -86,26 +110,23 @@ Nicolai Parlog / @nipafx
 
 [NOTE.speaker]
 --
-* class loaders do a linear scan
-** performance
-** unreliable results
 * the graph is gone
 --
+
+[data-background="images/ball-of-mud-2.jpg"]
+[data-state="empty"]
+=== !
 
 
 [data-background="images/jar-hell.jpg"]
 === Consequences
 
-* unexpressend dependencies
-* transitive dependencies
-* shadowing
-* version conflicts
-* complex class loading
-
-This is known as http://blog.codefx.org/java/jar-hell/[JAR hell]!
-
+* http://blog.codefx.org/java/jar-hell/[JAR hell]
+** unexpressed, transitive dependencies
+** shadowing, version conflicts
+** complex class loading
+* slow
 * unsecure
-* slow class loading
 * maintenance nightmare
 
 
@@ -121,6 +142,46 @@ This is known as http://blog.codefx.org/java/jar-hell/[JAR hell]!
 ++++
 <h3>Teaching the JVM about that graph</h3>
 ++++
+
+[NOTE.speaker]
+--
+* modularity is the keyword
+--
+
+
+=== Quick History
+
+2005:: first discussions about modularity in JDK
+2008:: Project Jigsaw is created
+2011-2014:: exploratory phase;
+ends with https://www.jcp.org/en/jsr/detail?id=376[JSR 376]
+2015:: prototype is released
+2017:: Java 9 gets released with Jigsaw
+
+
+
+[NOTE.speaker]
+--
+* 2006: Java 6
+* 2008:
+** to create a simple module system
+** just for the JDK
+** for Java 7
+** "in the next year or so" (http://mreinhold.org/blog/jigsaw[Reinhold])
+* 2010: Oracle aquires Sun, Jigsaw is halted
+* 2011: Jigsaw gets fully staffed
+* 2011: Java 7
+* 2014: Java 8
+* JSR 376: Java Platform Module System
+--
+
+
+[data-background="images/flag-amsterdam.jpg"]
+=== Disclaimer / Call to arms
+
+* all is based on a prototype
+* everything can change
+* *this is the time for community feedback*
 
 
 === Goals
@@ -142,27 +203,6 @@ Introducing modules, which
 * encapsulate internals
 
 Everything else follows from here!
-
-
-=== Compatibility I
-
-Some internal changes can
-http://blog.codefx.org/java/dev/how-java-9-and-project-jigsaw-may-break-your-code/[break existing code]!
-
-* Strong Encapsulation
-** disappearance of most internal APIs (http://openjdk.java.net/jeps/261[JEP 261])
-** it looks like critical APIs will survive until Java 10 +
-(e.g. `sun.misc.Unsafe` -- see http://openjdk.java.net/jeps/260[JEP 260])
-** use https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html[`jdeps`] (preferably from JDK 9)
-
-=== Compatibility II
-
-* Modular Run-Time Images (http://openjdk.java.net/jeps/220[JEP 220])
-** new JDK/JRE layout
-** unavailability of internal JARs (e.g. `rt.jar`)
-** new URL schema for runtime image content
-** removal of Endorsed Standards Override Mechanism
-** removal of Extension Mechanism
 
 
 === Concepts & Features
@@ -190,12 +230,13 @@ http://blog.codefx.org/java/dev/how-java-9-and-project-jigsaw-may-break-your-cod
 == Modules
 
 ++++
-<h3>Building Blocks</h3>
+<h3>Pieces of a puzzle</h3>
 ++++
 
 These are the nodes in our graph.
 
 
+////
 === Definition
 
 [quote,'http://openjdk.java.net/projects/jigsaw/spec/sotms/#modules[State Of The Module System]']
@@ -207,8 +248,10 @@ To control how its code refers to types in other modules,
 To control how code in other modules refers to types in its packages,
  a module declares which of those packages it _exports_.
 ____
+////
 
-=== Summary
+
+=== Description
 
 Modules
 
@@ -226,9 +269,9 @@ Modules
 +
 [source,java]
 ----
-module <module_name> {
-	requires <other_module>;
-	exports <api_package>;
+module $module_name {
+	requires $other_module;
+	exports $api_package;
 }
 ----
 * this is called a *Module Declaration* or a +
@@ -253,6 +296,7 @@ Readability brings edges into our graph.
 It is the basis for *Reliable Configuration*.
 
 
+////
 === Definition
 
 [quote,'http://openjdk.java.net/projects/jigsaw/spec/sotms/#readability[State Of The Module System]']
@@ -262,9 +306,10 @@ When _one module depends_ directly upon another [...]
 We therefore say that the first module _reads_ the second
  or, equivalently, that the second module is _readable_ by the first.
 ____
+////
 
 
-=== Summary
+=== Description
 
 For two modules `A` and `B` with +
 [source,java]
@@ -290,10 +335,28 @@ we say
 
 Java will only compile/launch when
 
-* every dependency is fulfilled by one module
-* no two modules read each other ("no cycles")
-* every module reads at most one module +
-defining a given package ("no split packages")
+* every dependency is fulfilled
+* there are no cycles
+* there is no ambiguity
+
+[NOTE.speaker]
+--
+* multiple modules with the same name
+* split packages
+--
+
+
+// ####################### //
+// M O D U L E   G R A P H //
+// ####################### //
+
+
+[data-background="images/graph.png"]
+== Module Graph
+
+TODO
+
+=== TODO
 
 
 
@@ -316,6 +379,7 @@ It builds on top of Readability.
 It is the basis for *Strong Encapsulation*.
 
 
+////
 === Definition
 
 [quote,'http://openjdk.java.net/projects/jigsaw/spec/sotms/#accessibility[State Of The Module System]']
@@ -324,9 +388,10 @@ ____
  only when the first _module is readable_ by the second module [...]
  and the first module _exports that package_.
 ____
+////
 
 
-=== Summary
+=== Description
 
 A type in one module is only accessible +
 by code in another module if
@@ -340,7 +405,10 @@ by code in another module if
 
 * `public` is no longer public
 * even reflection http://mail.openjdk.java.net/pipermail/jpms-spec-observers/2015-September/000122.html[doesn't work]
-* command line has a flag (`-XaddExports`)
+* command line provides escape hatches
+
+
+=== Consequences
 
 * great boost for maintainability
 * also the major reason for community unrest
@@ -370,21 +438,27 @@ Find it https://github.com/CodeFX-org/demo-jigsaw-advent-calendar[on GitHub]!
 
 // with `Main` (right to left): http://yuml.me/edit/dc231796
 // without `Main`, huge: http://yuml.me/edit/64cd5858
-
 image::http://yuml.me/64cd5858[]
+
+
+=== Code
 
 [source,java]
 ----
 public static void main(String[] args) {
-	List<SurpriseFactory> factories = asList(
-			new ChocolateF_(), new QuoteF_());
-	Calendar calendar = Calendar.create(factories);
-	println(calendar.asText());
+	List<SurpriseF_> fac = asList(
+		new ChocolateF_(), new QuoteF_());
+	Calendar cal = Calendar.create(fac);
+	println(cal.asText());
 }
 ----
 
+// see above
+image::http://yuml.me/64cd5858[_,75%]
 
-=== Command Line (JAR)
+
+////
+=== Command Line
 
 [source,bash]
 ----
@@ -402,6 +476,7 @@ java -jar jars/advent.jar
 * add dependencies to the class path
 * works on JDK 9 as is
 --
+////
 
 
 === A single module
@@ -444,6 +519,7 @@ module advent {
 image::http://yuml.me/6ef759bc[]
 
 
+////
 === A single module
 
 ++++
@@ -468,6 +544,7 @@ java -mp mods -m advent
 --
 * explain module path
 --
+////
 
 
 === Multiple Modules
@@ -475,7 +552,7 @@ java -mp mods -m advent
 // first image taken from "Structure"
 ++++
 <div class="imageblock" style="">
-	<div class="content"><img src="http://yuml.me/64cd5858" alt="64cd5858" style="margin: 0; width:80%">
+	<div class="content"><img src="http://yuml.me/64cd5858" alt="64cd5858" style="margin: 0; width:75%">
 </div></div>
 <div class="imageblock fragment current-visible" data-fragment-index="0">
 	<div class="content"><img src="http://yuml.me/b2e21fbf" alt="b2e21fbf" style="margin: 0;"></div>
@@ -489,9 +566,8 @@ image::http://yuml.me/b2e21fbf[]
 
 // The outer div's height must be specified explicitly so that vertical space is reserved
 // for the non-displayed fragments.
-// In this case, because it is the last element on the slide, we can pick infinity.
 ++++
-<div style="height: 500px;">
+<div style="height: 250px;">
 <div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module surprise {
 	<span class="hljs-comment">// requires no other modules</span>
 	exports org.codefx.demo.advent.surprise;
@@ -513,6 +589,27 @@ image::http://yuml.me/b2e21fbf[]
 ++++
 
 
+=== Multiple Modules
+
+++++
+<h4>Compilation, Packaging, Execution</h4>
+++++
+
+[source,bash]
+----
+# First compile/package the other modules
+#   ('surprises', 'calendar', 'factories')
+#   into folder 'mods'.
+# Compile/package 'main':
+javac -mp mods -d classes/advent ${*.java}
+jar -c --file=mods/advent.jar
+	--main-class=org.codefx.demo.advent.Main
+	${*.java}
+# Launch the application:
+java -mp mods -m advent
+----
+
+////
 === Multiple Modules
 
 ++++
@@ -547,6 +644,13 @@ jar -c --file=mods/advent.jar
 ----
 java -mp mods -m advent
 ----
+////
+
+
+
+// ########## //
+// LAST WORDS //
+// ########## //
 
 
 [data-background="images/question-mark.jpg"]
@@ -556,6 +660,30 @@ java -mp mods -m advent
 * what happens then?
 * what about migration?
 * ...?
+
+
+=== Compatibility I
+
+Some internal changes can
+http://blog.codefx.org/java/dev/how-java-9-and-project-jigsaw-may-break-your-code/[break existing code]!
+
+* Strong Encapsulation
+** disappearance of most internal APIs (http://openjdk.java.net/jeps/261[JEP 261])
+** it looks like critical APIs will survive until Java 10 +
+(e.g. `sun.misc.Unsafe` -- see http://openjdk.java.net/jeps/260[JEP 260])
+** use https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html[`jdeps`] (preferably from JDK 9)
+
+
+=== Compatibility II
+
+* Modular Run-Time Images (http://openjdk.java.net/jeps/220[JEP 220])
+** new JDK/JRE layout
+** unavailability of internal JARs (e.g. `rt.jar`)
+** new URL schema for runtime image content
+** removal of Endorsed Standards Override Mechanism
+** removal of Extension Mechanism
+
+
 
 ////
 
