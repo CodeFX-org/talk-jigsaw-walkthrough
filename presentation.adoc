@@ -346,19 +346,6 @@ Java will only compile/launch when
 --
 
 
-// ####################### //
-// M O D U L E   G R A P H //
-// ####################### //
-
-
-[data-background="images/graph.png"]
-== Module Graph
-
-TODO
-
-=== TODO
-
-
 
 // ######################### //
 // A C C E S S I B I L I T Y //
@@ -505,6 +492,7 @@ module advent {
 [NOTE.speaker]
 --
 * talk about `java.base`
+* this is a simple module graph
 --
 
 
@@ -558,6 +546,12 @@ java -mp mods -m advent
 	<div class="content"><img src="http://yuml.me/b2e21fbf" alt="b2e21fbf" style="margin: 0;"></div>
 </div>
 ++++
+
+[NOTE.speaker]
+--
+* this is another module graph
+--
+
 
 === Multiple Modules
 
