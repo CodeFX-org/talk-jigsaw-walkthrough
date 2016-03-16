@@ -10,7 +10,31 @@
 :revealjs_transition: slide
 :revealjs_backgroundTransition: fade
 
-Nicolai Parlog / @nipafx
+++++
+<div class="event">
+	<div class="participant">
+		<img src="images/logo-nipa.png" class="logo">
+		<div class="name">
+			<p><a href="http://codefx.org">Nicolai Parlog</a></p>
+			<p><a href="https://twitter.com/nipafx" title="Nicolai on Twitter">@nipafx</a></p>
+		</div>
+	</div>
+	<div class="participant">
+		<img src="images/logo-disy.png" class="logo">
+		<div class="name">
+			<p><a href="http://disy.net">Disy</a></p>
+			<p><a href="https://twitter.com/disynet" title="Disy on Twitter">@Disy</a></p>
+		</div>
+	</div>
+	<div class="participant">
+		<img src="images/logo-jug-ka.png" class="logo">
+		<div class="name">
+			<p><a href="http://jug-karlsruhe.de/">JUG Karlsruhe</a></p>
+			<p><a href="https://twitter.com/jugka" title="JUG Karlsruhe on Twitter">@jugka</a></p>
+		</div>
+	</div>
+</div>
+++++
 
 ++++
 <link rel="stylesheet" href="highlight.js/9.2.0.mono-blue.css">
