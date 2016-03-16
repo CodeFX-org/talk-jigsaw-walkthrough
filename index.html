@@ -1,4 +1,26 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Jigsaw Walkthrough</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="reveal.js/css/theme/nipa-day.css" id="theme"><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet"><script type="text/javascript">document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section><h1>Jigsaw Walkthrough</h1><div class="paragraph"><p>Nicolai Parlog / @nipafx</p></div>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Jigsaw Walkthrough</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="reveal.js/css/theme/nipa-day.css" id="theme"><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet"><script>document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section id="title-slide"><h1>Jigsaw Walkthrough</h1><div class="event">
+	<div class="participant">
+		<img src="images/logo-nipa.png" class="logo">
+		<div class="name">
+			<p><a href="http://codefx.org">Nicolai Parlog</a></p>
+			<p><a href="https://twitter.com/nipafx" title="Nicolai on Twitter">@nipafx</a></p>
+		</div>
+	</div>
+	<div class="participant">
+		<img src="images/logo-disy.png" class="logo">
+		<div class="name">
+			<p><a href="http://disy.net">Disy</a></p>
+			<p><a href="https://twitter.com/disynet" title="Disy on Twitter">@Disy</a></p>
+		</div>
+	</div>
+	<div class="participant">
+		<img src="images/logo-jug-ka.png" class="logo">
+		<div class="name">
+			<p><a href="http://jug-karlsruhe.de/">JUG Karlsruhe</a></p>
+			<p><a href="https://twitter.com/jugka" title="JUG Karlsruhe on Twitter">@jugka</a></p>
+		</div>
+	</div>
+</div>
 <link rel="stylesheet" href="highlight.js/9.2.0.mono-blue.css">
 <script src="highlight.js/9.2.0.min.js"></script>
 <script>
@@ -26,7 +48,7 @@
 	document.addEventListener('DOMContentLoaded', function () {
 		document.body.appendChild(document.querySelector('footer'));
 	})
-</script><p><small></small></p></section>
+</script></section>
 <section><section id="_impedance_mismatch"><h2>Impedance Mismatch</h2><h3>Where the JVM disagrees with us</h3></section><section id="_how_do_you_think_about_software" data-background="images/binary-code.jpg"><h2>How do you think about Software?</h2><h3>What is it made of?</h3>
 <aside class="notes"><div class="ulist"><ul><li><p>"think about your favorite project"</p></li><li><p>"or about one you&#8217;re being paid for"</p></li></ul></div></aside></section><section id="_how_i_think_about_software" data-background="images/graph.png"><h2>How I think about Software</h2><div class="ulist"><ul><li><p>interacting parts</p></li><li><p>parts have</p><div class="ulist"><ul><li><p>names</p></li><li><p>dependencies</p></li><li><p>capabilities</p></li></ul></div></li><li><p>creates a graph</p></li></ul></div>
 <aside class="notes"><div class="ulist"><ul><li><p>helps tools and devs to</p><div class="ulist"><ul><li><p>dissect</p></li><li><p>analyze</p></li><li><p>reason about</p></li><li><p>work with</p></li></ul></div></li><li><p>Maven, jdeps</p></li></ul></div></aside></section><section id="_how_the_jvm_thinks_about_it" data-transition="slide-in none-out" data-background="images/ball-of-mud-2.jpg"><h2>How the JVM thinks about it</h2><div class="ulist"><ul><li><p>parts are packaged as JARs</p></li><li><p>to the JVM JARs</p><div class="ulist"><ul><li><p>have no names</p></li><li><p>dependencies are unexpressed</p></li><li><p>have no coherent surface</p></li></ul></div></li><li><p>JVM rolls them into one big ball of mud</p></li></ul></div>
@@ -36,11 +58,11 @@ ends with <a href="https://www.jcp.org/en/jsr/detail?id=376">JSR 376</a></p></dd
 <aside class="notes"><div class="ulist"><ul><li><p>2006: Java 6</p></li><li><p>2008:</p><div class="ulist"><ul><li><p>to create a simple module system</p></li><li><p>just for the JDK</p></li><li><p>for Java 7</p></li><li><p>"in the next year or so" (<a href="http://mreinhold.org/blog/jigsaw">Reinhold</a>)</p></li></ul></div></li><li><p>2010: Oracle aquires Sun, Jigsaw is halted</p></li><li><p>2011: Jigsaw gets fully staffed</p></li><li><p>2011: Java 7</p></li><li><p>2014: Java 8</p></li><li><p>JSR 376: Java Platform Module System</p></li></ul></div></aside></section><section id="_disclaimer_call_to_arms" data-background="images/flag-amsterdam.jpg"><h2>Disclaimer / Call to arms</h2><div class="ulist"><ul><li><p>all is based on a prototype</p></li><li><p>everything can change</p></li><li><p><strong>this is the time for community feedback</strong></p></li></ul></div></section><section id="_goals"><h2>Goals</h2><div class="ulist"><ul><li><p><strong>Reliable Configuration</strong></p></li><li><p><strong>Strong Encapsulation</strong></p></li><li><p>Scalable Systems (esp. the JDK)</p></li><li><p>Security</p></li><li><p>Performance</p></li><li><p>Maintainability</p></li></ul></div></section><section id="_means"><h2>Means</h2><div class="paragraph"><p>Introducing modules, which</p></div>
 <div class="ulist"><ul><li><p>have a name</p></li><li><p>express dependencies</p></li><li><p>encapsulate internals</p></li></ul></div>
 <div class="paragraph"><p>Everything else follows from here!</p></div></section><section id="_concepts_features"><h2>Concepts &amp; Features</h2><ul>
-	<li><p>Modules, Readability, Accessibility, Module Graph</p></li>
+	<li><p>Modules, Readability, Accessibility</p></li>
 	<li class="fragment dim" data-fragment-index="1"><p>Implied Readability, Qualified Exports</p></li>
-	<li><p>Modular JARs, Module Path</p></li>
+	<li><p>Modular JARs, Module Path, Module Graph</p></li>
+	<li><p>Services</p></li>
 	<li><p>Unnamed Modules, Automatic Modules</p></li>
-	<li class="fragment dim" data-fragment-index="1"><p>Services</p></li>
 	<li class="fragment dim" data-fragment-index="1"><p>Reflection, Layers</p></li>
 	<li class="fragment dim" data-fragment-index="1"><p>Runtime Images</p></li>
 </ul></section></section>
@@ -119,7 +141,33 @@ java -mp mods -m advent</code></pre></div></div></section></section>
 <section><section id="_now_what" data-background="images/question-mark.jpg"><h2>Now What?</h2><div class="ulist"><ul><li><p>what could possibly go wrong?</p></li><li><p>what happens then?</p></li><li><p>what about migration?</p></li><li><p>&#8230;&#8203;?</p></li></ul></div></section><section id="_compatibility_i"><h2>Compatibility I</h2><div class="paragraph"><p>Some internal changes can
 <a href="http://blog.codefx.org/java/dev/how-java-9-and-project-jigsaw-may-break-your-code/">break existing code</a>!</p></div>
 <div class="ulist"><ul><li><p>Strong Encapsulation</p><div class="ulist"><ul><li><p>disappearance of most internal APIs (<a href="http://openjdk.java.net/jeps/261">JEP 261</a>)</p></li><li><p>it looks like critical APIs will survive until Java 10<br>
-(e.g. <code>sun.misc.Unsafe</code>&#8201;&#8212;&#8201;see <a href="http://openjdk.java.net/jeps/260">JEP 260</a>)</p></li><li><p>use <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html"><code>jdeps</code></a> (preferably from JDK 9)</p></li></ul></div></li></ul></div></section><section id="_compatibility_ii"><h2>Compatibility II</h2><div class="ulist"><ul><li><p>Modular Run-Time Images (<a href="http://openjdk.java.net/jeps/220">JEP 220</a>)</p><div class="ulist"><ul><li><p>new JDK/JRE layout</p></li><li><p>unavailability of internal JARs (e.g. <code>rt.jar</code>)</p></li><li><p>new URL schema for runtime image content</p></li><li><p>removal of Endorsed Standards Override Mechanism</p></li><li><p>removal of Extension Mechanism</p></li></ul></div></li></ul></div></section></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script type="text/javascript">// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+(e.g. <code>sun.misc.Unsafe</code>&#8201;&#8212;&#8201;see <a href="http://openjdk.java.net/jeps/260">JEP 260</a>)</p></li><li><p>use <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html"><code>jdeps</code></a> (preferably from JDK 9)</p></li></ul></div></li></ul></div></section><section id="_compatibility_ii"><h2>Compatibility II</h2><div class="ulist"><ul><li><p>Modular Run-Time Images (<a href="http://openjdk.java.net/jeps/220">JEP 220</a>)</p><div class="ulist"><ul><li><p>new JDK/JRE layout</p></li><li><p>unavailability of internal JARs (e.g. <code>rt.jar</code>)</p></li><li><p>new URL schema for runtime image content</p></li><li><p>removal of Endorsed Standards Override Mechanism</p></li><li><p>removal of Extension Mechanism</p></li></ul></div></li></ul></div></section></section>
+<section><section id="_annex"><h2>Annex</h2></section><section id="_image_credits_i"><h2>Image Credits I</h2><div class="ulist"><ul><li><p>disy-landscape<br>
+© <a href="http://www.disy.net/en/welcome.html">Disy Informationssysteme GmbH</a></p></li><li><p>binary-code:
+<a href="https://www.flickr.com/photos/132889348@N07/">Christiaan Colen</a>
+(<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>)</p></li><li><p>graph:
+<a href="https://www.flickr.com/photos/chef_ele/">chef_ele</a>
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>ball-of-mud-2:
+<a href="https://www.flickr.com/photos/elgentscho/">Andi Gentsch</a>
+(<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>)</p></li><li><p>jar-hell:
+<a href="https://wellcomelibrary.org/">Wellcome Library, London</a>
+(<a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>)</p></li><li><p>puzzle-cubed:
+<a href="https://www.flickr.com/photos/dps/">David Singleton</a>
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>flag-amsterdam:
+<a href="https://www.flickr.com/photos/rogersg/">George Rex</a>
+(<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>)</p></li></ul></div></section><section id="_image_credits_ii"><h2>Image Credits II</h2><div class="ulist"><ul><li><p>puzzle-piece-green:
+<a href="http://www.stockmonkeys.com/">StockMonkeys.com</a>
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>puzzle-pieces-put-together:<br>
+<a href="http://www.seniorliving.org">Ken Teegardin</a>
+(<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>)</p></li><li><p>iceberg:
+<a href="https://www.flickr.com/photos/usoceangov/">NOAA&#8217;s National Ocean Service</a>
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>advent-calendar:
+<a href="https://www.flickr.com/photos/littlestuffme/">Tina D</a>
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>class and module diagrams:<br>
+<a href="http://blog.codefx.org/about-nicolai-parlog/">Nicolai Parlog</a>
+(<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC 4.0</a>)</p></li><li><p>question-mark:
+<a href="http://milosevicmilos.com/">Milos Milosevic</a>
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li></ul></div></section></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
 Reveal.initialize({
   // Display controls in the bottom right corner
   controls: false,
@@ -172,7 +220,7 @@ Reveal.initialize({
   // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
   parallaxBackgroundImage: 'images/disy-landscape.jpg',
   // Parallax background size in CSS syntax (e.g., "2100px 900px")
-  parallaxBackgroundSize: '3246px 1237px',
+  parallaxBackgroundSize: '4096px 1868px',
 
   // The "normal" size of the presentation, aspect ratio will be preserved
   // when the presentation is scaled to fit different resolutions. Can be
