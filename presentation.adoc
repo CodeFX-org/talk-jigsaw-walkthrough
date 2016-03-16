@@ -758,7 +758,7 @@ http://blog.codefx.org/java/dev/how-java-9-and-project-jigsaw-may-break-your-cod
 *** http://openjdk.java.net/jeps/260[JEP 260]: encapsulate (most) internal APIs
 *** http://openjdk.java.net/jeps/261[JEP 261]: implement module system
 ** all collected under https://www.jcp.org/en/jsr/detail?id=376[JSR 376: Java Platform Module System]
-2015 (TODO when exactly?)::
+2015::
 JDK-9-with-Jigsaw https://jdk9.java.net/jigsaw/[early access builds] contain all relevant changes to experiment with the module system
 
 
@@ -775,8 +775,50 @@ JDK-9-with-Jigsaw https://jdk9.java.net/jigsaw/[early access builds] contain all
 *** JDK 9: general availability
 
 
-== Image Credits
-
-TODO
-
 ////
+
+== Annex
+
+=== Image Credits I
+
+* disy-landscape +
+© http://www.disy.net/en/welcome.html[Disy Informationssysteme GmbH]
+* binary-code:
+https://www.flickr.com/photos/132889348@N07/[Christiaan Colen]
+(https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
+* graph:
+https://www.flickr.com/photos/chef_ele/[chef_ele]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+* ball-of-mud-2:
+https://www.flickr.com/photos/elgentscho/[Andi Gentsch]
+(https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
+* jar-hell:
+https://wellcomelibrary.org/[Wellcome Library, London]
+(https://creativecommons.org/licenses/by/4.0/[CC-BY 4.0])
+* puzzle-cubed:
+https://www.flickr.com/photos/dps/[David Singleton]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+* flag-amsterdam:
+https://www.flickr.com/photos/rogersg/[George Rex]
+(https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
+
+=== Image Credits II
+
+* puzzle-piece-green:
+http://www.stockmonkeys.com/[StockMonkeys.com]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+* puzzle-pieces-put-together: +
+http://www.seniorliving.org[Ken Teegardin]
+(https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
+* iceberg:
+https://www.flickr.com/photos/usoceangov/[NOAA's National Ocean Service]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+* advent-calendar:
+https://www.flickr.com/photos/littlestuffme/[Tina D]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+* class and module diagrams: +
+http://blog.codefx.org/about-nicolai-parlog/[Nicolai Parlog]
+(https://creativecommons.org/licenses/by-nc/4.0/[CC-BY-NC 4.0])
+* question-mark:
+http://milosevicmilos.com/[Milos Milosevic]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
