@@ -6,7 +6,7 @@
 :revealjs_history: true
 :revealjs_progress: false
 :revealjs_parallaxBackgroundImage: images/disy-landscape.jpg
-:revealjs_parallaxBackgroundSize: 3246px 1237px
+:revealjs_parallaxBackgroundSize: 4096px 1868px
 :revealjs_transition: slide
 :revealjs_backgroundTransition: fade
 
