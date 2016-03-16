@@ -28,9 +28,9 @@ https://www.flickr.com/photos/132889348@N07/20607150556/[Binary Code]:
 https://www.flickr.com/photos/132889348@N07/[Christiaan Colen]
 (https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
 
-=== disy-landscape
+=== disy-landscape.jpg
 
-Copyright http://www.disy.net/en/welcome.html[Disy Informationssysteme GmbH]
+© http://www.disy.net/en/welcome.html[Disy Informationssysteme GmbH]
 
 === flag-amsterdam.jpg
 
@@ -40,7 +40,7 @@ https://www.flickr.com/photos/rogersg/[George Rex]
 
 === graph.png
 
-https://www.flickr.com/photos/chef_ele/3790471493[NetflixPrize-MovieMap-NoTitles-RedYellowOnBlack]
+https://www.flickr.com/photos/chef_ele/3790471493[NetflixPrize-MovieMap-NoTitles-RedYellowOnBlack]:
 https://www.flickr.com/photos/chef_ele/[chef_ele]
 (https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
 
@@ -58,7 +58,7 @@ https://wellcomelibrary.org/[Wellcome Library, London]
 
 === puzzle-cubed.jpg
 
-https://www.flickr.com/photos/dps/136564771/in/photostream/[Puzzle Cubed]
+https://www.flickr.com/photos/dps/136564771[Puzzle Cubed]
 https://www.flickr.com/photos/dps/[David Singleton]
 (https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
 
