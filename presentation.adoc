@@ -209,11 +209,11 @@ Everything else follows from here!
 
 ++++
 <ul>
-	<li><p>Modules, Readability, Accessibility, Module Graph</p></li>
+	<li><p>Modules, Readability, Accessibility</p></li>
 	<li class="fragment dim" data-fragment-index="1"><p>Implied Readability, Qualified Exports</p></li>
-	<li><p>Modular JARs, Module Path</p></li>
+	<li><p>Modular JARs, Module Path, Module Graph</p></li>
+	<li><p>Services</p></li>
 	<li><p>Unnamed Modules, Automatic Modules</p></li>
-	<li class="fragment dim" data-fragment-index="1"><p>Services</p></li>
 	<li class="fragment dim" data-fragment-index="1"><p>Reflection, Layers</p></li>
 	<li class="fragment dim" data-fragment-index="1"><p>Runtime Images</p></li>
 </ul>
