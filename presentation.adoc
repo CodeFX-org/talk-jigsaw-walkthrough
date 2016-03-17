@@ -683,21 +683,39 @@ java -mp mods -m advent
 Some internal changes can
 http://blog.codefx.org/java/dev/how-java-9-and-project-jigsaw-may-break-your-code/[break existing code]!
 
-* Strong Encapsulation
-** disappearance of most internal APIs (http://openjdk.java.net/jeps/261[JEP 261])
-** it looks like critical APIs will survive until Java 10 +
-(e.g. `sun.misc.Unsafe` -- see http://openjdk.java.net/jeps/260[JEP 260])
-** use https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html[`jdeps`] (preferably from JDK 9)
+Just by running on JDK 9 +
+(i.e. even without modularizing the application)
 
 
 === Compatibility II
 
-* Modular Run-Time Images (http://openjdk.java.net/jeps/220[JEP 220])
-** new JDK/JRE layout
-** unavailability of internal JARs (e.g. `rt.jar`)
-** new URL schema for runtime image content
-** removal of Endorsed Standards Override Mechanism
-** removal of Extension Mechanism
+*Reliable Configuration*
+
+* exported packages should have a unique origin
+* no module must read the same package +
+from two modules
+* i.e. no "split packages"
+
+
+=== Compatibility III
+
+*Strong Encapsulation*
+
+* disappearance of most internal APIs (http://openjdk.java.net/jeps/261[JEP 261])
+* it looks like critical APIs will survive until Java 10 +
+(e.g. `sun.misc.Unsafe` -- see http://openjdk.java.net/jeps/260[JEP 260])
+* use https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html[`jdeps`] (preferably from JDK 9)
+
+
+=== Compatibility IV
+
+*Modular Run-Time Images* (http://openjdk.java.net/jeps/220[JEP 220])
+
+* new JDK/JRE layout
+* unavailability of internal JARs (e.g. `rt.jar`)
+* new URL schema for runtime image content
+* removal of Endorsed Standards Override Mechanism
+* removal of Extension Mechanism
 
 
 
