@@ -42,22 +42,22 @@
 // Just adding a footer does not work because reveal.js puts it into the slides
 // and we couldn't get it out via CSS. So we move it via JavaScript.
 ++++
-<footer style="display: none;">
-	<div><p>
-		<a href="http://codefx.org">Nicolai Parlog</a>
+<footer>
+	<div class="participant">
 		<img src="images/logo-nipa.png" class="logo">
-		<a href="https://twitter.com/nipafx" title="Nicolai on Twitter">@nipafx</a>
+		<div class="name"><p>
+			Nicolai Parlog
+			/ <a href="http://codefx.org">codefx.org</a>
+			/ <a href="https://twitter.com/nipafx" title="Nicolai on Twitter">@nipafx</a>
+		</div>
 	</p></div>
-	<div><p>
-		<a href="http://disy.net">Disy Informationssysteme GmbH</a>
-		<img src="images/logo-disy.png" class="logo">
-		<a href="https://twitter.com/disynet" title="Disy on Twitter">@Disy</a>
-	</p></div>
-	<div><p>
-		<a href="http://jug-karlsruhe.de/">JUG Karlsruhe</a>
+	<div class="participant">
 		<img src="images/logo-jug-ka.png" class="logo">
-		<a href="https://twitter.com/jugka" title="JUG Karlsruhe on Twitter">@jugka</a>
-	</p></div>
+		<div class="name"><p>
+			<a href="http://jug-karlsruhe.de/">JUG Karlsruhe</a>
+			/ <a href="https://twitter.com/jugka" title="JUG Karlsruhe on Twitter">@jugka</a>
+		</p></div>
+	</div>
 </footer>
 <script>
 	document.addEventListener('DOMContentLoaded', function () {
@@ -68,6 +68,8 @@
 
 ////
 ////
+
+
 
 // ################################### //
 // I M P E D E N C E   M I S M A T C H //
