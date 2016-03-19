@@ -401,7 +401,7 @@ Find it https://github.com/CodeFX-org/demo-jigsaw-advent-calendar[on GitHub]!
 === Structure
 
 // http://yuml.me/edit/64cd5858
-image::images/advent-calendar-structure.png[]
+image::images/advent-calendar-structure.png[style="diagram"]
 
 
 === Code
@@ -417,7 +417,7 @@ public static void main(String[] args) {
 ----
 
 // see above
-image::images/advent-calendar-structure.png[_,75%]
+image::images/advent-calendar-structure.png[_,75%,style="diagram"]
 
 
 ////
@@ -449,7 +449,7 @@ java -jar jars/advent.jar
 ++++
 
 // http://yuml.me/edit/f3ed6b1a
-image::images/advent-calendar-module-single.png[]
+image::images/advent-calendar-module-single.png[style="diagram"]
 
 [source,java]
 ----
@@ -515,10 +515,10 @@ java -mp mods -m advent
 // iamge #2: http://yuml.me/edit/b2e21fbf
 ++++
 <div class="imageblock" style="">
-	<div class="content"><img src="images/advent-calendar-structure.png" style="margin: 0; width:75%">
+	<div class="content"><img src="images/advent-calendar-structure.png" class="diagram" style="margin: 0; width:75%;">
 </div></div>
 <div class="imageblock fragment current-visible" data-fragment-index="0">
-	<div class="content"><img src="images/advent-calendar-module-multi.png" alt="b2e21fbf" style="margin: 0;"></div>
+	<div class="content"><img src="images/advent-calendar-module-multi.png" alt="b2e21fbf" class="diagram" style="margin: 0;"></div>
 </div>
 ++++
 
@@ -531,7 +531,7 @@ java -mp mods -m advent
 === Multiple Modules
 
 // taken from previous slide
-image::images/advent-calendar-module-multi.png[]
+image::images/advent-calendar-module-multi.png[style="diagram"]
 
 // The outer div's height must be specified explicitly so that vertical space is reserved
 // for the non-displayed fragments.
