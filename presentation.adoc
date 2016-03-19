@@ -1,12 +1,12 @@
 = Jigsaw Walkthrough
 :backend: revealjs
 :revealjs_center: true
-:revealjs_theme: nipa-day
+:revealjs_theme: nipa-night
 :revealjs_controls: false
 :revealjs_history: true
 :revealjs_progress: false
-:revealjs_parallaxBackgroundImage: images/disy-landscape.jpg
-:revealjs_parallaxBackgroundSize: 4096px 1868px
+:revealjs_parallaxBackgroundImage: images/puzzle-people.jpg
+:revealjs_parallaxBackgroundSize: 3246px 1237px
 :revealjs_transition: slide
 :revealjs_backgroundTransition: fade
 
@@ -31,7 +31,7 @@
 ++++
 
 ++++
-<link rel="stylesheet" href="highlight.js/9.2.0.mono-blue.css">
+<link rel="stylesheet" href="highlight.js/9.2.0.monokai-sublime.css">
 <script src="highlight.js/9.2.0.min.js"></script>
 <script>
 	hljs.initHighlightingOnLoad();
