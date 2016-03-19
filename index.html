@@ -1,16 +1,10 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Jigsaw Walkthrough</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="reveal.js/css/theme/nipa-day.css" id="theme"><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet"><script>document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section id="title-slide"><h1>Jigsaw Walkthrough</h1><div class="event">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Jigsaw Walkthrough</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="reveal.js/css/theme/nipa-night.css" id="theme"><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet"><script type="text/javascript">document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section class="title-slide" data-state="title-slide"><h1>Jigsaw Walkthrough</h1><div class="event">
 	<div class="participant">
 		<img src="images/logo-nipa.png" class="logo">
 		<div class="name">
-			<p><a href="http://codefx.org">Nicolai Parlog</a></p>
-			<p><a href="https://twitter.com/nipafx" title="Nicolai on Twitter">@nipafx</a></p>
-		</div>
-	</div>
-	<div class="participant">
-		<img src="images/logo-disy.png" class="logo">
-		<div class="name">
-			<p><a href="http://disy.net">Disy</a></p>
-			<p><a href="https://twitter.com/disynet" title="Disy on Twitter">@Disy</a></p>
+			<p>Nicolai Parlog</p>
+			<p><a href="http://codefx.org">codefx.org</a> /
+				<a href="https://twitter.com/nipafx" title="Nicolai on Twitter">@nipafx</a></p>
 		</div>
 	</div>
 	<div class="participant">
@@ -21,28 +15,28 @@
 		</div>
 	</div>
 </div>
-<link rel="stylesheet" href="highlight.js/9.2.0.mono-blue.css">
+<link rel="stylesheet" href="highlight.js/9.2.0.monokai-sublime.css">
 <script src="highlight.js/9.2.0.min.js"></script>
 <script>
 	hljs.initHighlightingOnLoad();
 	hljs.configure({tabReplace: '    '})
 </script>
-<footer style="display: none;">
-	<div><p>
-		<a href="http://codefx.org">Nicolai Parlog</a>
+<footer>
+	<div class="participant">
 		<img src="images/logo-nipa.png" class="logo">
-		<a href="https://twitter.com/nipafx" title="Nicolai on Twitter">@nipafx</a>
+		<div class="name"><p>
+			Nicolai Parlog
+			/ <a href="http://codefx.org">codefx.org</a>
+			/ <a href="https://twitter.com/nipafx" title="Nicolai on Twitter">@nipafx</a>
+		</div>
 	</p></div>
-	<div><p>
-		<a href="http://disy.net">Disy Informationssysteme GmbH</a>
-		<img src="images/logo-disy.png" class="logo">
-		<a href="https://twitter.com/disynet" title="Disy on Twitter">@Disy</a>
-	</p></div>
-	<div><p>
-		<a href="http://jug-karlsruhe.de/">JUG Karlsruhe</a>
+	<div class="participant">
 		<img src="images/logo-jug-ka.png" class="logo">
-		<a href="https://twitter.com/jugka" title="JUG Karlsruhe on Twitter">@jugka</a>
-	</p></div>
+		<div class="name"><p>
+			<a href="http://jug-karlsruhe.de/">JUG Karlsruhe</a>
+			/ <a href="https://twitter.com/jugka" title="JUG Karlsruhe on Twitter">@jugka</a>
+		</p></div>
+	</div>
 </footer>
 <script>
 	document.addEventListener('DOMContentLoaded', function () {
@@ -172,7 +166,7 @@ from two modules</p></li><li><p>i.e. no "split packages"</p></li></ul></div></se
 <a href="http://blog.codefx.org/about-nicolai-parlog/">Nicolai Parlog</a>
 (<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC 4.0</a>)</p></li><li><p>question-mark:
 <a href="http://milosevicmilos.com/">Milos Milosevic</a>
-(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li></ul></div></section></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li></ul></div></section></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script type="text/javascript">// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
 Reveal.initialize({
   // Display controls in the bottom right corner
   controls: false,
@@ -213,7 +207,7 @@ Reveal.initialize({
   previewLinks: false,
   // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
   // NOTE setting the theme in the config no longer works in reveal.js 3.x
-  //theme: Reveal.getQueryHash().theme || 'nipa-day',
+  //theme: Reveal.getQueryHash().theme || 'nipa-night',
   // Transition style (e.g., none, fade, slide, convex, concave, zoom)
   transition: Reveal.getQueryHash().transition || 'slide',
   // Transition speed (e.g., default, fast, slow)
@@ -223,9 +217,9 @@ Reveal.initialize({
   // Number of slides away from the current that are visible
   viewDistance: 3,
   // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
-  parallaxBackgroundImage: 'images/disy-landscape.jpg',
+  parallaxBackgroundImage: 'images/puzzle-people.jpg',
   // Parallax background size in CSS syntax (e.g., "2100px 900px")
-  parallaxBackgroundSize: '4096px 1868px',
+  parallaxBackgroundSize: '3246px 1237px',
 
   // The "normal" size of the presentation, aspect ratio will be preserved
   // when the presentation is scaled to fit different resolutions. Can be
