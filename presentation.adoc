@@ -15,15 +15,9 @@
 	<div class="participant">
 		<img src="images/logo-nipa.png" class="logo">
 		<div class="name">
-			<p><a href="http://codefx.org">Nicolai Parlog</a></p>
-			<p><a href="https://twitter.com/nipafx" title="Nicolai on Twitter">@nipafx</a></p>
-		</div>
-	</div>
-	<div class="participant">
-		<img src="images/logo-disy.png" class="logo">
-		<div class="name">
-			<p><a href="http://disy.net">Disy</a></p>
-			<p><a href="https://twitter.com/disynet" title="Disy on Twitter">@Disy</a></p>
+			<p>Nicolai Parlog</p>
+			<p><a href="http://codefx.org">codefx.org</a> /
+				<a href="https://twitter.com/nipafx" title="Nicolai on Twitter">@nipafx</a></p>
 		</div>
 	</div>
 	<div class="participant">
