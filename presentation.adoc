@@ -227,6 +227,8 @@ Everything else follows from here!
 
 === Concepts & Features
 
+TODO : update
+
 ++++
 <ul>
 	<li><p>Modules, Readability, Accessibility</p></li>
@@ -241,13 +243,18 @@ Everything else follows from here!
 
 
 
-// ############# //
-// M O D U L E S //
-// ############# //
+// ################### //
+// J M S   B A S I C S //
+// ################### //
 
+== Java Module System Basics
+
+++++
+<h3>Getting started...</h3>
+++++
 
 [data-background="images/puzzle-piece-green.jpg"]
-== Modules
+=== Modules
 
 ++++
 <h3>Pieces of a puzzle</h3>
@@ -256,22 +263,7 @@ Everything else follows from here!
 These are the nodes in our graph.
 
 
-////
 === Definition
-
-[quote,'http://openjdk.java.net/projects/jigsaw/spec/sotms/#modules[State Of The Module System]']
-____
-A module is a _named_, self-describing collection of code and data. [...]
-
-To control how its code refers to types in other modules,
- a module declares which other modules it _requires_ [...].
-To control how code in other modules refers to types in its packages,
- a module declares which of those packages it _exports_.
-____
-////
-
-
-=== Description
 
 Modules
 
@@ -279,6 +271,11 @@ Modules
 * express their dependencies
 * export specific packages +
 (and hide the rest)
+
+[NOTE.speaker]
+--
+* inverse URL naming schema for modules
+--
 
 
 === Implementation
@@ -298,14 +295,8 @@ module $module_name {
 *Module Descriptor*
 
 
-
-// ##################### //
-// R E A D A B I L I T Y //
-// ##################### //
-
-
 [data-background="images/puzzle-pieces-put-together.jpg"]
-== Readability
+=== Readability
 
 ++++
 <h3>Putting the pieces together</h3>
@@ -316,20 +307,7 @@ Readability brings edges into our graph.
 It is the basis for *Reliable Configuration*.
 
 
-////
 === Definition
-
-[quote,'http://openjdk.java.net/projects/jigsaw/spec/sotms/#readability[State Of The Module System]']
-____
-When _one module depends_ directly upon another [...]
- then code in the first module will be able to refer to types in the second module.
-We therefore say that the first module _reads_ the second
- or, equivalently, that the second module is _readable_ by the first.
-____
-////
-
-
-=== Description
 
 For two modules `A` and `B` with +
 [source,java]
@@ -348,6 +326,8 @@ we say
 [NOTE.speaker]
 --
 * Implied Readability also leads to "A reads B"
+* the first two are always true
+* the last two materialize at runtime
 --
 
 
@@ -366,14 +346,8 @@ Java will only compile/launch when
 --
 
 
-
-// ######################### //
-// A C C E S S I B I L I T Y //
-// ######################### //
-
-
 [data-background="images/iceberg.jpg"]
-== Accessibility
+=== Accessibility
 
 ++++
 <h3>Hiding internals</h3>
@@ -384,18 +358,6 @@ Accessibility governs which types a module can see.
 It builds on top of Readability.
 
 It is the basis for *Strong Encapsulation*.
-
-
-////
-=== Definition
-
-[quote,'http://openjdk.java.net/projects/jigsaw/spec/sotms/#accessibility[State Of The Module System]']
-____
-[T]he public types in a package in one module [are] _accessible_ by code in some other module
- only when the first _module is readable_ by the second module [...]
- and the first module _exports that package_.
-____
-////
 
 
 === Description
@@ -424,13 +386,8 @@ by code in another module if
 
 
 
-// ############# //
-// E X A M P L E //
-// ############# //
-
-
 [data-background="images/advent-calendar.jpg"]
-== Jigsaw Advent Calendar
+=== Jigsaw Advent Calendar
 
 ++++
 <h3>A running example</h3>
@@ -488,7 +445,7 @@ java -jar jars/advent.jar
 === A single module
 
 ++++
-<h4>Modularization</h4>
+<h3>Modularization</h3>
 ++++
 
 // http://yuml.me/edit/f3ed6b1a
@@ -517,18 +474,18 @@ module advent {
 === A single module
 
 ++++
-<h4>Readability & Accessibility</h4>
+<h3>Readability & Accessibility</h3>
 ++++
 
 // http://yuml.me/edit/6ef759bc
-image::images/advent-calendar-readability-accessibility.png[]
+image::images/advent-calendar-readability-accessibility.png[style="diagram"]
 
 
 ////
 === A single module
 
 ++++
-<h4>Command Line</h4>
+<h3>Command Line</h3>
 ++++
 
 [source,bash]
@@ -604,7 +561,7 @@ image::images/advent-calendar-module-multi.png[]
 === Multiple Modules
 
 ++++
-<h4>Compilation, Packaging, Execution</h4>
+<h3>Compilation, Packaging, Execution</h3>
 ++++
 
 [source,bash]
@@ -620,43 +577,6 @@ jar -c --file=mods/advent.jar
 # Launch the application:
 java -mp mods -m advent
 ----
-
-////
-=== Multiple Modules
-
-++++
-<h4>Compilation & Packaging</h4>
-++++
-
-[source,bash]
-----
-# surprise
-javac -d classes/surprise ${*.java}
-jar -c --file=mods/surprise.jar ${*.class}
-# calendar & factories
-javac -mp mods -d classes/calendar ${*.java}
-jar -c --file=mods/calendar.jar ${*.class}
-javac -mp mods -d classes/factories ${*.java}
-jar -c --file=mods/factories.jar ${*.class}
-# main
-javac -mp mods -d classes/advent ${*.java}
-jar -c --file=mods/advent.jar
-	--main-class=org.codefx.demo.advent.Main
-	${*.java}
-----
-
-
-=== Multiple Modules
-
-++++
-<h4>Execution</h4>
-++++
-
-[source,bash]
-----
-java -mp mods -m advent
-----
-////
 
 
 
