@@ -130,7 +130,8 @@
 
 [NOTE.speaker]
 --
-* the graph is gone
+* graph is gone
+* "modularity erasure"
 --
 
 [data-background="images/ball-of-mud-2.jpg"]
@@ -156,7 +157,6 @@
 // ########################### //
 
 
-[data-background="images/puzzle-cubed.jpg"]
 == Project Jigsaw
 
 ++++
@@ -214,6 +214,7 @@ ends with https://www.jcp.org/en/jsr/detail?id=376[JSR 376]
 * Maintainability
 
 
+[data-background="images/puzzle-cubed.jpg"]
 === Means
 
 Introducing modules, which
@@ -381,7 +382,7 @@ by code in another module if
 
 * great boost for maintainability
 * also the major reason for community unrest
-* it looks like critical APIs will survive until Java 10 +
+* critical APIs might survive until Java 10 +
 (e.g. `sun.misc.Unsafe` -- see http://openjdk.java.net/jeps/260[JEP 260])
 
 
@@ -637,6 +638,22 @@ from two modules
 
 ////
 
+// ################### //
+// Q U E S T I O N S ? //
+// ################### //
+
+
+[data-background="images/question-mark.jpg"]
+== Questions?
+
+TODO: add speaker info here
+
+
+// ############# //
+// H I S T O R Y //
+// ############# //
+
+
 == History ==
 
 
@@ -711,12 +728,19 @@ JDK-9-with-Jigsaw https://jdk9.java.net/jigsaw/[early access builds] contain all
 
 ////
 
+// ######### //
+// A N N E X //
+// ######### //
+
+
 == Annex
 
 === Image Credits I
 
-* disy-landscape +
-© http://www.disy.net/en/welcome.html[Disy Informationssysteme GmbH]
+* puzzle-people:
+https://www.flickr.com/photos/pagedooley/[Kevin Dooley]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+
 * binary-code:
 https://www.flickr.com/photos/132889348@N07/[Christiaan Colen]
 (https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
