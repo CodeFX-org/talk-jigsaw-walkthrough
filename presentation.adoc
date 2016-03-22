@@ -581,59 +581,153 @@ java -mp mods -m advent
 
 
 
-// ########## //
-// LAST WORDS //
-// ########## //
+// ######################### //
+// C O M P A T I B I L I T Y //
+// ######################### //
 
 
-[data-background="images/question-mark.jpg"]
-== Now What?
+== Compatibility
 
-* what could possibly go wrong?
-* what happens then?
-* what about migration?
-* ...?
+++++
+<h3>What to look out for<br>when running on JDK 9</h3>
+++++
 
 
-=== Compatibility I
+[data-background=images/broken-glass.jpg]
+=== Break Stuff
 
 Some internal changes can
 http://blog.codefx.org/java/dev/how-java-9-and-project-jigsaw-may-break-your-code/[break existing code]!
 
 Just by running on JDK 9 +
-(i.e. even without modularizing the application)
+(i.e. even without modularizing the application).
+
+http://openjdk.java.net/jeps/261[JEP 261] contains a list of risks.
 
 
-=== Compatibility II
+[data-background=images/internals.jpg]
+=== Internal APIs
 
-*Reliable Configuration*
+* internal APIs disappear:
+** all in `sun.*`
+** most in `com.sun` +
+(unless marked `@jdk.Exported`)
+* critical APIs might survive until Java 10 +
+(e.g. `sun.misc.Unsafe` -- see http://openjdk.java.net/jeps/260[JEP 260])
 
-* exported packages should have a unique origin
+
+=== What to look for?
+
+* use https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html[`jdeps`] (preferably from JDK 9)
+** either manually: +
+`jdeps -jdkinternals {*.class/*.jar}`
+** or as part of your build (e.g. with https://github.com/CodeFX-org/JDeps-Maven-Plugin[JDeps Mvn])
+* recursively check your dependencies!
+
+
+=== What to do?
+
+. contact library developers
+. look for alternatives +
+(in the JDK or other libraries)
+. consider command line flag `-XaddExports`
+. turn to the Jigsaw mailing lists
+
+
+[data-background=images/cut.jpg]
+=== Split Packages
+
+* packages should have a unique origin
 * no module must read the same package +
 from two modules
-* i.e. no "split packages"
+
+The current implementation is even stricter:
+
+* no two modules must contain +
+the same package (exported or not)
 
 
-=== Compatibility III
+=== Examples
 
-*Strong Encapsulation*
-
-* disappearance of most internal APIs (http://openjdk.java.net/jeps/261[JEP 261])
-* it looks like critical APIs will survive until Java 10 +
-(e.g. `sun.misc.Unsafe` -- see http://openjdk.java.net/jeps/260[JEP 260])
-* use https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html[`jdeps`] (preferably from JDK 9)
+* some libraries split `javax.xml.*`, e.g. http://search.maven.org/#artifactdetails|xml-apis|xml-apis|2.0.2|jar[xml-apis]
+* http://mvnrepository.com/artifact/com.google.code.findbugs/jsr305[FindBugs-Jsr305] splits `javax.annotation`
 
 
-=== Compatibility IV
+=== What to look for?
 
-*Modular Run-Time Images* (http://openjdk.java.net/jeps/220[JEP 220])
+* search your code and dependencies +
+for `java(x)` packages (`jdeps` can help)
+* no tool support (http://mail.openjdk.java.net/pipermail/jigsaw-dev/2015-November/005227.html[yet?])
+* Note: +
+split packages on the class path will be inaccessible
+
+
+=== What to do?
+
+. is the split on purpose / necessary?
+. find other ways to solve the problem
+. upgradeable modules to replace run-time modules
+. command line `-Xpatch` to add individual classes
+
+
+[data-background=images/cells.jpg]
+=== Run-Time Images
 
 * new JDK/JRE layout
-* unavailability of internal JARs (e.g. `rt.jar`)
+* internal JARs are gone (e.g. `rt.jar`, `tools.jar`)
+* application class loader is no `URLClassLoader`
 * new URL schema for runtime image content
-* removal of Endorsed Standards Override Mechanism
-* removal of Extension Mechanism
 
+
+=== What to look for?
+
+* does the code rummage around +
+in the JDK / JRE folder?
+* search for casts to `URLClassLoader`
+* are URLs to JDK classes / resources handcrafted?
+
+
+[data-background=images/obsolete.jpg]
+=== Obsolete
+
+* Endorsed Standards Override Mechanism
+* Extension Mechanism
+* Boot Class Path Override
+
+[NOTE.speaker]
+--
+* ext. mech.: makes custom APIs available to all applications running on the JDK
+* first 2 replaced by upgradeable modules.
+--
+
+
+=== But wait, there's more!
+
+* yes, yes, there's more
+* you should really check http://openjdk.java.net/jeps/261[JEP 261]
+
+
+[data-background=images/sign.jpg]
+=== General Advice I
+
+The most relevant for most applications:
+
+* internal APIs
+* split packages
+
+
+[data-background=images/sign.jpg]
+=== General Advice II
+
+* get your code in shape +
+(and prevent relapses)
+* check your dependencies and tools
+* if any are suspicious +
+(automatically true for IDEs, build tools):
+** make sure they're alive
+** get them up to date!
+** or look for alternatives
+* get an https://jdk9.java.net/[EA-build] and *try it!*
 
 
 ////
