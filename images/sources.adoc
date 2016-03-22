@@ -28,6 +28,24 @@ https://www.flickr.com/photos/132889348@N07/20607150556/[Binary Code]:
 https://www.flickr.com/photos/132889348@N07/[Christiaan Colen]
 (https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
 
+=== broken-glass.jpg
+
+https://www.flickr.com/photos/akeg/2230862848/[Broken Glass at Work-6]
+https://www.flickr.com/photos/akeg/[Eric Schmuttenmaer]
+(https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
+
+=== cells.jpg
+
+https://www.flickr.com/photos/jonolist/3338861834/[Cells]
+https://www.flickr.com/photos/jonolist/[Jonathan Lin]
+(https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
+
+=== cut.jpg
+
+https://www.flickr.com/photos/span112/2889438473/[Cut]
+https://www.flickr.com/photos/span112/[Jinx!]
+(https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
+
 === disy-landscape.jpg
 
 © http://www.disy.net/en/welcome.html[Disy Informationssysteme GmbH]
@@ -50,11 +68,29 @@ https://www.flickr.com/photos/usoceangov/8290528771[Iceberg]:
 https://www.flickr.com/photos/usoceangov/[NOAA's National Ocean Service]
 (https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
 
+=== internal.jpg
+
+https://www.flickr.com/photos/generated/85543402/[Internal]
+https://www.flickr.com/photos/generated/[Jared Tarbell]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+
+=== internals.jpg
+
+https://www.flickr.com/photos/thedonquixotic/16851988305[Internals]
+https://www.flickr.com/photos/thedonquixotic/[David French]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+
 === jar-hell.jpg
 
 https://commons.wikimedia.org/wiki/File:An_angel_leading_a_soul_into_hell._Oil_painting_by_a_followe_Wellcome_L0030887.jpg[An Angel Leading A Soul Into Hell]:
 https://wellcomelibrary.org/[Wellcome Library, London]
 (https://creativecommons.org/licenses/by/4.0/[CC-BY 4.0])
+
+=== obsolete.jpg
+
+https://www.flickr.com/photos/trevor-king/12419679154/[#4 Obsolete]
+https://www.flickr.com/photos/trevor-king/[Trevor King]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
 
 === puzzle-cubed.jpg
 
@@ -91,3 +127,9 @@ https://www.flickr.com/photos/lizadaly/[Liza]
 https://www.flickr.com/photos/21496790@N06/5065834411[sensitive noise]
 http://milosevicmilos.com/[Milos Milosevic]
 (https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+
+=== sign.jpg
+
+https://www.flickr.com/photos/duncharris/3734701772/[Sign]
+https://www.flickr.com/photos/duncharris/[Duncan Harris]
+(https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
