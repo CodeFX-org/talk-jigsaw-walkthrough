@@ -620,6 +620,9 @@ Just by running on JDK 9 +
 
 http://openjdk.java.net/jeps/261[JEP 261] contains a list of risks.
 
+TODO:
+* new version strings
+
 
 [data-background=images/internals.jpg]
 === Internal APIs
@@ -851,6 +854,8 @@ JDK-9-with-Jigsaw https://jdk9.java.net/jigsaw/[early access builds] contain all
 
 
 == Annex
+
+TODO update credits
 
 === Image Credits I
 
