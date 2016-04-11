@@ -443,6 +443,22 @@ java -jar jars/advent.jar
 ////
 
 
+=== No Module
+
+* modularization is not required
+* JARs continue to work as today!
+
+(Unless you do forbidden things, more on that link:#/_compatibility[later].)
+
+* we can just put the application +
+on the class path as before
+
+++++
+<p class="fragment current-visible" data-fragment-index="1">(Boring...)</p>
+++++
+
+
+
 === A single module
 
 ++++
@@ -462,7 +478,7 @@ module advent {
 ----
 
 ++++
-<p class="fragment current-visible" data-fragment-index="1">(Boring...)</p>
+<p class="fragment current-visible" data-fragment-index="1">(Still Boring...)</p>
 ++++
 
 [NOTE.speaker]
