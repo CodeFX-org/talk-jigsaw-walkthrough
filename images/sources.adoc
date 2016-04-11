@@ -40,6 +40,12 @@ https://www.flickr.com/photos/jonolist/3338861834/[Cells]
 https://www.flickr.com/photos/jonolist/[Jonathan Lin]
 (https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
 
+=== confusion.jpg
+
+https://www.flickr.com/photos/procsilas/8116870793/[confusion]
+https://www.flickr.com/photos/procsilas/[Procsilas Moscas]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+
 === cut.jpg
 
 https://www.flickr.com/photos/span112/2889438473/[Cut]
@@ -55,6 +61,18 @@ https://www.flickr.com/photos/span112/[Jinx!]
 https://www.flickr.com/photos/rogersg/9489328988/[Amsterdam / Flag]
 https://www.flickr.com/photos/rogersg/[George Rex]
 (https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
+
+=== garbage-only.jpg
+
+https://www.flickr.com/photos/peterkaminski/17964466[Garbage Only]:
+https://www.flickr.com/photos/peterkaminski/[Peter Kaminski]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+
+=== golden-gate.jpg
+
+https://www.flickr.com/photos/82955120@N05/11702702564[Golden Dawn Bridge - HDR]:
+https://www.flickr.com/photos/82955120@N05/[Nicolas Raymond]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
 
 === graph.png
 
@@ -85,6 +103,12 @@ https://www.flickr.com/photos/thedonquixotic/[David French]
 https://commons.wikimedia.org/wiki/File:An_angel_leading_a_soul_into_hell._Oil_painting_by_a_followe_Wellcome_L0030887.jpg[An Angel Leading A Soul Into Hell]:
 https://wellcomelibrary.org/[Wellcome Library, London]
 (https://creativecommons.org/licenses/by/4.0/[CC-BY 4.0])
+
+=== keep-out.jpg
+
+https://www.flickr.com/photos/smithser/8441579102[Keep Out!]:
+https://www.flickr.com/photos/smithser/[Brian Smithson]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
 
 === obsolete.jpg
 
