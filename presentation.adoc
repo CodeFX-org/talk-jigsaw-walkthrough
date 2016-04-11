@@ -361,7 +361,7 @@ It builds on top of Readability.
 It is the basis for *Strong Encapsulation*.
 
 
-=== Description
+=== Definition
 
 A type in one module is only accessible +
 by code in another module if
