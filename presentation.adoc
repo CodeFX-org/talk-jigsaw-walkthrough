@@ -16,15 +16,15 @@
 		<img src="images/logo-nipa.png" class="logo">
 		<div class="name">
 			<p>Nicolai Parlog</p>
-			<p><a href="http://codefx.org">codefx.org</a> /
-				<a href="https://twitter.com/nipafx" title="Nicolai on Twitter">@nipafx</a></p>
+			<p><a href="http://codefx.org">codefx.org</a>
+				/ <a href="https://twitter.com/nipafx" title="Nicolai on Twitter">@nipafx</a></p>
 		</div>
 	</div>
 	<div class="participant">
-		<img src="images/logo-jug-ka.png" class="logo">
+		<img src="images/logo-jugs.png" class="logo">
 		<div class="name">
-			<p><a href="http://jug-karlsruhe.de/">JUG Karlsruhe</a></p>
-			<p><a href="https://twitter.com/jugka" title="JUG Karlsruhe on Twitter">@jugka</a></p>
+			<p><a href="http://www.jugs.org">JUG Stuttgart</a></p>
+			<p><a href="https://twitter.com/jug_stuttgart" title="JUG Stuttgart on Twitter">@jug_stuttgart</a></p>
 		</div>
 	</div>
 </div>
@@ -52,10 +52,10 @@
 		</div>
 	</p></div>
 	<div class="participant">
-		<img src="images/logo-jug-ka.png" class="logo">
+		<img src="images/logo-jugs.png" class="logo">
 		<div class="name"><p>
-			<a href="http://jug-karlsruhe.de/">JUG Karlsruhe</a>
-			/ <a href="https://twitter.com/jugka" title="JUG Karlsruhe on Twitter">@jugka</a>
+			<a href="http://www.jugs.org">JUG Stuttgart</a>
+				/ <a href="https://twitter.com/jug_stuttgart" title="JUG Stuttgart on Twitter">@jug_stuttgart</a>
 		</p></div>
 	</div>
 </footer>
