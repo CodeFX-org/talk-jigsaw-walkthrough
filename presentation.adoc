@@ -956,7 +956,6 @@ The most relevant for most applications:
 * get an https://jdk9.java.net/[EA-build] and *try it!*
 
 
-////
 
 // ################### //
 // Q U E S T I O N S ? //
@@ -966,8 +965,30 @@ The most relevant for most applications:
 [data-background="images/question-mark.jpg"]
 == Questions?
 
-TODO: add speaker info here
+++++
+<h3>Find Me</h3>
+++++
+http://codefx.org[codefx.org] / https://twitter.com/nipafx[@nipafx] / https://google.com/+NicolaiParlog[+NicolaiParlog]
 
+++++
+<h3>Hire Me</h3>
+++++
+Java 9 Migration & Training
+
+////
+++++
+<h3>Me</h3>
+++++
+
+since 2014: Java developer at http://www.disy.net/en/welcome.html[Disy]
+
+2011-2014: Java developer at http://www.isi.fraunhofer.de/isi-en/index.php[Fraunhofer ISI]
+
+until 2010: CS and Math at http://www.tu-dortmund.de[TU Dortmund]
+////
+
+
+////
 
 // ############# //
 // H I S T O R Y //
