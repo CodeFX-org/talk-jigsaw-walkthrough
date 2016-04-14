@@ -228,14 +228,12 @@ Everything else follows from here!
 
 === Concepts & Features
 
-TODO : update
-
 ++++
 <ul>
 	<li><p>Modules, Readability, Accessibility</p></li>
 	<li class="fragment dim" data-fragment-index="1"><p>Implied Readability, Qualified Exports</p></li>
 	<li><p>Modular JARs, Module Path, Module Graph</p></li>
-	<li><p>Services</p></li>
+	<li class="fragment dim" data-fragment-index="1"><p>Services</p></li>
 	<li><p>Unnamed Modules, Automatic Modules</p></li>
 	<li class="fragment dim" data-fragment-index="1"><p>Reflection, Layers</p></li>
 	<li class="fragment dim" data-fragment-index="1"><p>Runtime Images</p></li>
@@ -820,9 +818,6 @@ Just by running on JDK 9 +
 
 http://openjdk.java.net/jeps/261[JEP 261] contains a list of risks.
 
-TODO:
-* new version strings
-
 
 [data-background=images/internals.jpg]
 === Internal APIs
@@ -835,6 +830,7 @@ TODO:
 (e.g. `sun.misc.Unsafe` -- see http://openjdk.java.net/jeps/260[JEP 260])
 * six methods adding/removing +
 `PropertyChangeListener` got removed
+
 
 === What to look for?
 
@@ -931,6 +927,9 @@ in the JDK / JRE folder?
 
 * yes, yes, there's more
 * you should really check http://openjdk.java.net/jeps/261[JEP 261]
+* and http://openjdk.java.net/jeps/223[JEP 223] (new version strings)
+** goodbye `1.9.0_31`
+** hello `9.1.4`
 
 
 [data-background=images/sign.jpg]
@@ -1005,6 +1004,7 @@ OSGi Bundles:
 * import package or bundle
 * define public API by exporting packages
 
+
 [data-background="images/bundles.jpg"]
 === Jigsaw vs. OSGi
 
@@ -1031,6 +1031,7 @@ more flexible
 |operates below
 |one per bundle
 |===
+
 
 
 ////
@@ -1119,16 +1120,13 @@ JDK-9-with-Jigsaw https://jdk9.java.net/jigsaw/[early access builds] contain all
 // ######### //
 
 
-== Annex
+== Image Credits
 
-TODO update credits
-
-=== Image Credits I
+=== Introduction
 
 * puzzle-people:
 https://www.flickr.com/photos/pagedooley/[Kevin Dooley]
 (https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
-
 * binary-code:
 https://www.flickr.com/photos/132889348@N07/[Christiaan Colen]
 (https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
@@ -1141,14 +1139,17 @@ https://www.flickr.com/photos/elgentscho/[Andi Gentsch]
 * jar-hell:
 https://wellcomelibrary.org/[Wellcome Library, London]
 (https://creativecommons.org/licenses/by/4.0/[CC-BY 4.0])
-* puzzle-cubed:
-https://www.flickr.com/photos/dps/[David Singleton]
-(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+
+=== Project Jigsaw
+
 * flag-amsterdam:
 https://www.flickr.com/photos/rogersg/[George Rex]
 (https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
+* puzzle-cubed:
+https://www.flickr.com/photos/dps/[David Singleton]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
 
-=== Image Credits II
+=== Java Module System
 
 * puzzle-piece-green:
 http://www.stockmonkeys.com/[StockMonkeys.com]
@@ -1165,6 +1166,48 @@ https://www.flickr.com/photos/littlestuffme/[Tina D]
 * class and module diagrams: +
 http://blog.codefx.org/about-nicolai-parlog/[Nicolai Parlog]
 (https://creativecommons.org/licenses/by-nc/4.0/[CC-BY-NC 4.0])
+
+=== Migration
+
+* keep-out:
+https://www.flickr.com/photos/smithser/[Brian Smithson]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+* garbage-only:
+https://www.flickr.com/photos/peterkaminski/[Peter Kaminski]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+* golden-gate:
+https://www.flickr.com/photos/82955120@N05/[Nicolas Raymond]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+* confusion:
+https://www.flickr.com/photos/procsilas/[Procsilas Moscas]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+
+=== Compatibility
+
+* broken-glass:
+https://www.flickr.com/photos/akeg/[Eric Schmuttenmaer]
+(https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
+* internals:
+https://www.flickr.com/photos/thedonquixotic/[David French]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+* cut:
+https://www.flickr.com/photos/span112/[Jinx!]
+(https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
+* cells:
+https://www.flickr.com/photos/jonolist/[Jonathan Lin]
+(https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
+* obsolete:
+https://www.flickr.com/photos/trevor-king/[Trevor King]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+* sign:
+https://www.flickr.com/photos/duncharris/[Duncan Harris]
+(https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
+
+=== Rest
+
 * question-mark:
 http://milosevicmilos.com/[Milos Milosevic]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+* bundles:
+https://www.flickr.com/photos/dmahendra/[Danumurthi Mahendra]
 (https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
