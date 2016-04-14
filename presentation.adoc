@@ -988,6 +988,51 @@ until 2010: CS and Math at http://www.tu-dortmund.de[TU Dortmund]
 ////
 
 
+
+// ####### //
+// O S G I //
+// ####### //
+
+213
+
+[data-background="images/bundles.jpg"]
+== Jigsaw vs. OSGi
+
+OSGi Bundles:
+
+* are JARs with a descriptor (`MANIFEST.MF`)
+* have a name
+* import package or bundle
+* define public API by exporting packages
+
+[data-background="images/bundles.jpg"]
+=== Jigsaw vs. OSGi
+
+[cols="s,d,d", options="header"]
+|===
+|
+|Jigsaw
+|OSGi
+
+|Versioning
+|not at all
+|packages and modules
+
+|Runtime Behavior
+|mostly static
+|dynamic
+
+|Services
+|declarative via `ServiceLoader`
+|declarative or programmatically; +
+more flexible
+
+|Class Loaders
+|operates below
+|one per bundle
+|===
+
+
 ////
 
 // ############# //
