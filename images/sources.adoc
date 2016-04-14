@@ -34,6 +34,12 @@ https://www.flickr.com/photos/akeg/2230862848/[Broken Glass at Work-6]
 https://www.flickr.com/photos/akeg/[Eric Schmuttenmaer]
 (https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
 
+=== bundles.jpg
+
+https://www.flickr.com/photos/dmahendra/5758053768/[Bundles]
+https://www.flickr.com/photos/dmahendra/[Danumurthi Mahendra]
+(https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+
 === cells.jpg
 
 https://www.flickr.com/photos/jonolist/3338861834/[Cells]
@@ -42,7 +48,7 @@ https://www.flickr.com/photos/jonolist/[Jonathan Lin]
 
 === confusion.jpg
 
-https://www.flickr.com/photos/procsilas/8116870793/[confusion]
+https://www.flickr.com/photos/procsilas/8116870793/[Confusion]
 https://www.flickr.com/photos/procsilas/[Procsilas Moscas]
 (https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
 
