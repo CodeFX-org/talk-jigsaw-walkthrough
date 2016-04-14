@@ -51,12 +51,11 @@
 ends with <a href="https://www.jcp.org/en/jsr/detail?id=376">JSR 376</a></p></dd><dt class="hdlist1">2015</dt><dd><p>prototype is released</p></dd><dt class="hdlist1">2017</dt><dd><p>Java 9 gets released with Jigsaw</p></dd></dl></div>
 <aside class="notes"><div class="ulist"><ul><li><p>2006: Java 6</p></li><li><p>2008:</p><div class="ulist"><ul><li><p>to create a simple module system</p></li><li><p>just for the JDK</p></li><li><p>for Java 7</p></li><li><p>"in the next year or so" (<a href="http://mreinhold.org/blog/jigsaw">Reinhold</a>)</p></li></ul></div></li><li><p>2010: Oracle aquires Sun, Jigsaw is halted</p></li><li><p>2011: Jigsaw gets fully staffed</p></li><li><p>2011: Java 7</p></li><li><p>2014: Java 8</p></li><li><p>JSR 376: Java Platform Module System</p></li></ul></div></aside></section><section id="_disclaimer_call_to_arms" data-background="images/flag-amsterdam.jpg"><h2>Disclaimer / Call to arms</h2><div class="ulist"><ul><li><p>all is based on a prototype</p></li><li><p>everything can change</p></li><li><p><strong>this is the time for community feedback</strong></p></li></ul></div></section><section id="_goals"><h2>Goals</h2><div class="ulist"><ul><li><p><strong>Reliable Configuration</strong></p></li><li><p><strong>Strong Encapsulation</strong></p></li><li><p>Scalable Systems (esp. the JDK)</p></li><li><p>Security</p></li><li><p>Performance</p></li><li><p>Maintainability</p></li></ul></div></section><section id="_means" data-background="images/puzzle-cubed.jpg"><h2>Means</h2><div class="paragraph"><p>Introducing modules, which</p></div>
 <div class="ulist"><ul><li><p>have a name</p></li><li><p>express dependencies</p></li><li><p>encapsulate internals</p></li></ul></div>
-<div class="paragraph"><p>Everything else follows from here!</p></div></section><section id="_concepts_features"><h2>Concepts &amp; Features</h2><div class="paragraph"><p>TODO : update</p></div>
-<ul>
+<div class="paragraph"><p>Everything else follows from here!</p></div></section><section id="_concepts_features"><h2>Concepts &amp; Features</h2><ul>
 	<li><p>Modules, Readability, Accessibility</p></li>
 	<li class="fragment dim" data-fragment-index="1"><p>Implied Readability, Qualified Exports</p></li>
 	<li><p>Modular JARs, Module Path, Module Graph</p></li>
-	<li><p>Services</p></li>
+	<li class="fragment dim" data-fragment-index="1"><p>Services</p></li>
 	<li><p>Unnamed Modules, Automatic Modules</p></li>
 	<li class="fragment dim" data-fragment-index="1"><p>Reflection, Layers</p></li>
 	<li class="fragment dim" data-fragment-index="1"><p>Runtime Images</p></li>
@@ -117,17 +116,17 @@ on the class path as before</p></li></ul></div>
 <div style="height: 250px;">
 <div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module surprise {
 	<span class="hljs-comment">// requires no other modules</span>
-	exports org.codefx.demo.advent.surprise;
+	exports org.codefx.advent.surprise;
 }</code></pre></div></div>
 <div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module calendar {
 	requires surprise;
-	exports org.codefx.demo.advent.calendar;
+	exports org.codefx.advent.calendar;
 }</code></pre></div></div>
 <div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module factories {
 	requires surprise;
-	exports org.codefx.demo.advent.factories;
+	exports org.codefx.advent.factories;
 }</code></pre></div></div>
-<div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module main {
+<div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module advent {
 	requires calendar;
 	requires factories;
 	requires surprise;
@@ -136,11 +135,11 @@ on the class path as before</p></li></ul></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="bash language-bash"># First compile/package the other modules
 #   ('surprises', 'calendar', 'factories')
 #   into folder 'mods'.
-# Compile/package 'main':
+# Compile/package 'advent':
 javac -mp mods -d classes/advent ${*.java}
 jar -c --file=mods/advent.jar
-	--main-class=org.codefx.demo.advent.Main
-	${*.java}
+	--main-class=org.codefx.advent.Main
+	${*.class}
 # Launch the application:
 java -mp mods -m advent</code></pre></div></div></section></section>
 <section><section id="_migration"><h2>Migration</h2><h3>Moving Into Module Land</h3></section><section id="_why_is_it_even_an_option" data-background="images/keep-out.jpg"><h2>Why Is It Even An Option?</h2><div class="ulist"><ul><li><p>most module systems are "in or out",<br></p></li><li><p>but modularized JDK and legacy JARs<br>
@@ -151,40 +150,35 @@ have to cooperate!</p></li><li><p>so migration has to be possible</p></li></ul><
 contains <em>all</em> JARs on the class path<br>
 (including modular JARs).</p></div>
 <div class="ulist"><ul><li><p>has no name (surprise!)</p></li><li><p>can read all modules</p></li><li><p>exports all packages</p></li></ul></div>
-<aside class="notes"><div class="ulist"><ul><li><p>one unnamed module per class loader</p></li></ul></div></aside></section><section id="_example"><h2>Example</h2><div class="ulist"><ul><li><p>put all your JARs on the class path</p></li></ul></div>
-<div class="paragraph"><p>TODO: diagram</p></div></section><section id="_no_access"><h2>No Access</h2><div class="ulist"><ul><li><p>what if your code was modularized?<br>
+<aside class="notes"><div class="ulist"><ul><li><p>one unnamed module per class loader</p></li></ul></div></aside></section><section id="_example"><h2>Example</h2><div class="paragraph"><p>Put all your JARs on the class path.</p></div>
+<div class="imageblock diagram" style=""><div class="content"><img src="images/migration-unnamed.png" alt="migration unnamed"></div></div></section><section id="_no_access"><h2>No Access</h2><div class="ulist"><ul><li><p>what if your code was modularized?<br>
 and your dependencies were not?</p></li><li><p>proper modules can not depend on<br>
 "the chaos on the class path"</p></li><li><p>this is not possible:</p></li></ul></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code>module advent {
 	requires unnamed;
-}</code></pre></div></div></section><section id="_automatic_modules" data-background="images/golden-gate.jpg"><h2>Automatic Modules</h2><h3>From Modules To The Class Path</h3></section><section id="_definition_5"><h2>Definition</h2><div class="paragraph"><p>An <strong>Automatic Module</strong><br>
+}</code></pre></div></div></section><section id="_no_access_2"><h2>No Access</h2><div class="imageblock diagram" style=""><div class="content"><img src="images/migration-unnamed-dependency.png" alt="migration unnamed dependency"></div></div></section><section id="_automatic_modules" data-background="images/golden-gate.jpg"><h2>Automatic Modules</h2><h3>From Modules To The Class Path</h3></section><section id="_definition_5"><h2>Definition</h2><div class="paragraph"><p>An <strong>Automatic Module</strong><br>
 is created for each "regular" JAR<br>
 on the module path.</p></div>
 <div class="ulist"><ul><li><p>gets a name based on the file name</p></li><li><p>can read all modules<br>
-(including the Unnamed Module)</p></li><li><p>exports all packages</p></li></ul></div></section><section id="_example_2"><h2>Example</h2><div class="ulist"><ul><li><p>put <code>guava-19.0.jar</code> on the class path</p></li><li><p>then this works:</p></li></ul></div>
+(including the Unnamed Module)</p></li><li><p>exports all packages</p></li></ul></div></section><section id="_example_2"><h2>Example</h2><div class="ulist"><ul><li><p>put <code>guava-19.0.jar</code> on the module path</p></li><li><p>then this works:</p></li></ul></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code>module advent {
 	requires guava;
-}</code></pre></div></div>
-<div class="paragraph"><p>TODO: diagram</p></div></section><section id="_what_goes_where" data-background="images/confusion.jpg"><h2>What Goes Where?</h2><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:33.3333%"><col style="width:33.3333%"><col style="width:33.3334%"></colgroup><thead><tr><th class="tableblock halign-left valign-top"></th><th class="tableblock halign-left valign-top">Class Path</th><th class="tableblock halign-left valign-top">Module Path</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regular JAR</strong></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Unnamed Module</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Automatic Module</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Modular JAR</strong></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Unnamed Module</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Named Module</p></td></tr></tbody></table></section><section id="_migration_strategies"><h2>Migration Strategies</h2><div class="paragraph"><p>Two strategies emerge:</p></div>
+}</code></pre></div></div></section><section id="_example_3"><h2>Example</h2><div class="imageblock diagram" style=""><div class="content"><img src="images/migration-automatic.png" alt="migration automatic"></div></div></section><section id="_what_goes_where" data-background="images/confusion.jpg"><h2>What Goes Where?</h2><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:33.3333%"><col style="width:33.3333%"><col style="width:33.3334%"></colgroup><thead><tr><th class="tableblock halign-left valign-top"></th><th class="tableblock halign-left valign-top">Class Path</th><th class="tableblock halign-left valign-top">Module Path</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regular JAR</strong></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Unnamed Module</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Automatic Module</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Modular JAR</strong></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Unnamed Module</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Named Module</p></td></tr></tbody></table></section><section id="_migration_strategies"><h2>Migration Strategies</h2><div class="paragraph"><p>Two strategies emerge:</p></div>
 <div class="ulist"><ul><li><p>bottom-up migration</p></li><li><p>top-down migration</p></li></ul></div></section><section id="_bottom_up_migration"><h2>Bottom-Up Migration</h2><div class="paragraph"><p>Works best for Projects <strong>without</strong><br>
 unmodularized dependencies<br>
 (libraries).</p></div>
-<div class="ulist"><ul><li><p>turn project JARs into modules</p></li><li><p>they still work on the class path</p></li><li><p>clients can move them the module path<br>
-whenever they want</p></li></ul></div></section><section id="_bottom_up_migration_2"><h2>Bottom-Up Migration</h2><h3>Example</h3>
-<div class="paragraph"><p>TODO: diagram</p></div></section><section id="_top_down_migration"><h2>Top-Down Migration</h2><div class="paragraph"><p>Required for Projects <strong>with</strong><br>
+<div class="ulist"><ul><li><p>turn project JARs into modules</p></li><li><p>they still work on the class path</p></li><li><p>clients can move them to the module path<br>
+whenever they want</p></li></ul></div></section><section id="_top_down_migration"><h2>Top-Down Migration</h2><div class="paragraph"><p>Required for Projects <strong>with</strong><br>
 unmodularized dependencies<br>
 (applications).</p></div>
-<div class="ulist"><ul><li><p>turn project JARs into modules</p></li></ul></div></section><section id="_top_down_migration_2"><h2>Top-Down Migration</h2><div class="ulist"><ul><li><p>modularized dependencies:</p><div class="ulist"><ul><li><p>require direct ones</p></li><li><p>put all on the module path</p></li></ul></div></li><li><p>unmodularized dependencies:</p><div class="ulist"><ul><li><p>require direct ones with automatic name</p></li><li><p>put direct ones on the module path</p></li><li><p>put others on either path</p></li></ul></div></li></ul></div></section><section id="_top_down_migration_3"><h2>Top-Down Migration</h2><h3>Example</h3>
-<div class="paragraph"><p>TODO: diagram</p></div></section><section id="_top_down_migration_4"><h2>Top-Down Migration</h2><div class="paragraph"><p>When dependencies get modularized:</p></div>
+<div class="ulist"><ul><li><p>turn project JARs into modules</p></li></ul></div></section><section id="_top_down_migration_2"><h2>Top-Down Migration</h2><div class="ulist"><ul><li><p>modularized dependencies:</p><div class="ulist"><ul><li><p>require direct ones</p></li><li><p>put all on the module path</p></li></ul></div></li><li><p>unmodularized dependencies:</p><div class="ulist"><ul><li><p>require direct ones with automatic name</p></li><li><p>put direct ones on the module path</p></li><li><p>put others on either path</p></li></ul></div></li></ul></div></section><section id="_top_down_migration_3"><h2>Top-Down Migration</h2><div class="paragraph"><p>When dependencies get modularized:</p></div>
 <div class="ulist"><ul><li><p>hopefully the name didn&#8217;t change</p></li><li><p>if they are already on the module path,<br>
 nothing changes</p></li><li><p>otherwise move them there</p></li><li><p>check their dependencies</p></li></ul></div></section></section>
 <section><section id="_compatibility"><h2>Compatibility</h2><h3>What to look out for<br>when running on JDK 9</h3></section><section id="_break_stuff" data-background="images/broken-glass.jpg"><h2>Break Stuff</h2><div class="paragraph"><p>Some internal changes can
 <a href="http://blog.codefx.org/java/dev/how-java-9-and-project-jigsaw-may-break-your-code/">break existing code</a>!</p></div>
 <div class="paragraph"><p>Just by running on JDK 9<br>
 (even without modularizing the application).</p></div>
-<div class="paragraph"><p><a href="http://openjdk.java.net/jeps/261">JEP 261</a> contains a list of risks.</p></div>
-<div class="paragraph"><p>TODO:
-* new version strings</p></div></section><section id="_internal_apis" data-background="images/internals.jpg"><h2>Internal APIs</h2><div class="ulist"><ul><li><p>internal APIs disappear:</p><div class="ulist"><ul><li><p>all in <code>sun.*</code></p></li><li><p>most in <code>com.sun</code><br>
+<div class="paragraph"><p><a href="http://openjdk.java.net/jeps/261">JEP 261</a> contains a list of risks.</p></div></section><section id="_internal_apis" data-background="images/internals.jpg"><h2>Internal APIs</h2><div class="ulist"><ul><li><p>internal APIs disappear:</p><div class="ulist"><ul><li><p>all in <code>sun.*</code></p></li><li><p>most in <code>com.sun</code><br>
 (unless marked <code>@jdk.Exported</code>)</p></li></ul></div></li><li><p>critical APIs might survive until Java 10<br>
 (e.g. <code>sun.misc.Unsafe</code>&#8201;&#8212;&#8201;see <a href="http://openjdk.java.net/jeps/260">JEP 260</a>)</p></li><li><p>six methods adding/removing<br>
 <code>PropertyChangeListener</code> got removed</p></li></ul></div></section><section id="_what_to_look_for"><h2>What to look for?</h2><div class="ulist"><ul><li><p>use <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html"><code>jdeps</code></a> (preferably from JDK 9)</p><div class="ulist"><ul><li><p>either manually:<br>
@@ -198,7 +192,7 @@ the same package (exported or not)</p></li></ul></div></section><section id="_ex
 for <code>java(x)</code> packages (<code>jdeps</code> can help)</p></li><li><p>no tool support (<a href="http://mail.openjdk.java.net/pipermail/jigsaw-dev/2015-November/005227.html">yet?</a>)</p></li><li><p>Note:<br>
 split packages on the class path will be inaccessible</p></li></ul></div></section><section id="_what_to_do_2"><h2>What to do?</h2><div class="olist arabic"><ol class="arabic"><li><p>is the split on purpose / necessary?</p></li><li><p>find other ways to solve the problem</p></li><li><p>upgradeable modules to replace run-time modules</p></li><li><p>command line <code>-Xpatch</code> to add individual classes</p></li></ol></div></section><section id="_run_time_images" data-background="images/cells.jpg"><h2>Run-Time Images</h2><div class="ulist"><ul><li><p>new JDK/JRE layout</p></li><li><p>internal JARs are gone (e.g. <code>rt.jar</code>, <code>tools.jar</code>)</p></li><li><p>JARs are now JMODs</p></li><li><p>application class loader is no <code>URLClassLoader</code></p></li><li><p>new URL schema for runtime image content</p></li></ul></div></section><section id="_what_to_look_for_3"><h2>What to look for?</h2><div class="ulist"><ul><li><p>does the code rummage around<br>
 in the JDK / JRE folder?</p></li><li><p>search for casts to <code>URLClassLoader</code></p></li><li><p>are URLs to JDK classes / resources handcrafted?</p></li></ul></div></section><section id="_obsolete" data-background="images/obsolete.jpg"><h2>Obsolete</h2><div class="ulist"><ul><li><p>Endorsed Standards Override Mechanism</p></li><li><p>Extension Mechanism</p></li><li><p>Boot Class Path Override</p></li></ul></div>
-<aside class="notes"><div class="ulist"><ul><li><p>ext. mech.: makes custom APIs available to all applications running on the JDK</p></li><li><p>first 2 replaced by upgradeable modules.</p></li></ul></div></aside></section><section id="_but_wait_there_s_more"><h2>But wait, there&#8217;s more!</h2><div class="ulist"><ul><li><p>yes, yes, there&#8217;s more</p></li><li><p>you should really check <a href="http://openjdk.java.net/jeps/261">JEP 261</a></p></li></ul></div></section><section id="_general_advice_i" data-background="images/sign.jpg"><h2>General Advice I</h2><div class="paragraph"><p>The most relevant for most applications:</p></div>
+<aside class="notes"><div class="ulist"><ul><li><p>ext. mech.: makes custom APIs available to all applications running on the JDK</p></li><li><p>first 2 replaced by upgradeable modules.</p></li></ul></div></aside></section><section id="_but_wait_there_s_more"><h2>But wait, there&#8217;s more!</h2><div class="ulist"><ul><li><p>yes, yes, there&#8217;s more</p></li><li><p>you should really check <a href="http://openjdk.java.net/jeps/261">JEP 261</a></p></li><li><p>and <a href="http://openjdk.java.net/jeps/223">JEP 223</a> (new version strings)</p><div class="ulist"><ul><li><p>goodbye <code>1.9.0_31</code></p></li><li><p>hello <code>9.1.4</code></p></li></ul></div></li></ul></div></section><section id="_general_advice_i" data-background="images/sign.jpg"><h2>General Advice I</h2><div class="paragraph"><p>The most relevant for most applications:</p></div>
 <div class="ulist"><ul><li><p>internal APIs</p></li><li><p>split packages</p></li></ul></div></section><section id="_general_advice_ii" data-background="images/sign.jpg"><h2>General Advice II</h2><div class="ulist"><ul><li><p>get your code in shape<br>
 (and prevent relapses)</p></li><li><p>check your dependencies and tools</p></li><li><p>if any are suspicious<br>
 (automatically true for IDEs, build tools):</p><div class="ulist"><ul><li><p>make sure they&#8217;re alive</p></li><li><p>get them up to date!</p></li><li><p>or look for alternatives</p></li></ul></div></li><li><p>get an <a href="https://jdk9.java.net/">EA-build</a> and <strong>try it!</strong></p></li></ul></div></section></section>
@@ -206,7 +200,9 @@ in the JDK / JRE folder?</p></li><li><p>search for casts to <code>URLClassLoader
 <div class="paragraph"><p><a href="http://codefx.org">codefx.org</a> / <a href="https://twitter.com/nipafx">@nipafx</a> / <a href="https://google.com/+NicolaiParlog">+NicolaiParlog</a></p></div>
 <h3>Hire Me</h3>
 <div class="paragraph"><p>Java 9 Migration &amp; Training</p></div></section>
-<section><section id="_annex"><h2>Annex</h2><div class="paragraph"><p>TODO update credits</p></div></section><section id="_image_credits_i"><h2>Image Credits I</h2><div class="ulist"><ul><li><p>puzzle-people:
+<section><section id="_jigsaw_vs_osgi" data-background="images/bundles.jpg"><h2>Jigsaw vs. OSGi</h2><div class="paragraph"><p>OSGi Bundles:</p></div><div class="ulist"><ul><li><p>are JARs with a descriptor (<code>MANIFEST.MF</code>)</p></li><li><p>have a name</p></li><li><p>import package or bundle</p></li><li><p>define public API by exporting packages</p></li></ul></div></section><section id="_jigsaw_vs_osgi_2" data-background="images/bundles.jpg"><h2>Jigsaw vs. OSGi</h2><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:33.3333%"><col style="width:33.3333%"><col style="width:33.3334%"></colgroup><thead><tr><th class="tableblock halign-left valign-top"></th><th class="tableblock halign-left valign-top">Jigsaw</th><th class="tableblock halign-left valign-top">OSGi</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Versioning</strong></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">not at all</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">packages and modules</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Runtime Behavior</strong></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">mostly static</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">dynamic</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Services</strong></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">declarative via <code>ServiceLoader</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">declarative or programmatically;<br>
+more flexible</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Class Loaders</strong></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">operates below</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">one per bundle</p></td></tr></tbody></table></section></section>
+<section><section id="_image_credits"><h2>Image Credits</h2></section><section id="_introduction"><h2>Introduction</h2><div class="ulist"><ul><li><p>puzzle-people:
 <a href="https://www.flickr.com/photos/pagedooley/">Kevin Dooley</a>
 (<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>binary-code:
 <a href="https://www.flickr.com/photos/132889348@N07/">Christiaan Colen</a>
@@ -216,11 +212,11 @@ in the JDK / JRE folder?</p></li><li><p>search for casts to <code>URLClassLoader
 <a href="https://www.flickr.com/photos/elgentscho/">Andi Gentsch</a>
 (<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>)</p></li><li><p>jar-hell:
 <a href="https://wellcomelibrary.org/">Wellcome Library, London</a>
-(<a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>)</p></li><li><p>puzzle-cubed:
-<a href="https://www.flickr.com/photos/dps/">David Singleton</a>
-(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>flag-amsterdam:
+(<a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>)</p></li></ul></div></section><section id="_project_jigsaw_2"><h2>Project Jigsaw</h2><div class="ulist"><ul><li><p>flag-amsterdam:
 <a href="https://www.flickr.com/photos/rogersg/">George Rex</a>
-(<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>)</p></li></ul></div></section><section id="_image_credits_ii"><h2>Image Credits II</h2><div class="ulist"><ul><li><p>puzzle-piece-green:
+(<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>)</p></li><li><p>puzzle-cubed:
+<a href="https://www.flickr.com/photos/dps/">David Singleton</a>
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li></ul></div></section><section id="_java_module_system"><h2>Java Module System</h2><div class="ulist"><ul><li><p>puzzle-piece-green:
 <a href="http://www.stockmonkeys.com/">StockMonkeys.com</a>
 (<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>puzzle-pieces-put-together:<br>
 <a href="http://www.seniorliving.org">Ken Teegardin</a>
@@ -230,8 +226,32 @@ in the JDK / JRE folder?</p></li><li><p>search for casts to <code>URLClassLoader
 <a href="https://www.flickr.com/photos/littlestuffme/">Tina D</a>
 (<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>class and module diagrams:<br>
 <a href="http://blog.codefx.org/about-nicolai-parlog/">Nicolai Parlog</a>
-(<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC 4.0</a>)</p></li><li><p>question-mark:
+(<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC 4.0</a>)</p></li></ul></div></section><section id="_migration_2"><h2>Migration</h2><div class="ulist"><ul><li><p>keep-out:
+<a href="https://www.flickr.com/photos/smithser/">Brian Smithson</a>
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>garbage-only:
+<a href="https://www.flickr.com/photos/peterkaminski/">Peter Kaminski</a>
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>golden-gate:
+<a href="https://www.flickr.com/photos/82955120@N05/">Nicolas Raymond</a>
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>confusion:
+<a href="https://www.flickr.com/photos/procsilas/">Procsilas Moscas</a>
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>module diagrams:<br>
+<a href="http://blog.codefx.org/about-nicolai-parlog/">Nicolai Parlog</a>
+(<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC 4.0</a>)</p></li></ul></div></section><section id="_compatibility_2"><h2>Compatibility</h2><div class="ulist"><ul><li><p>broken-glass:
+<a href="https://www.flickr.com/photos/akeg/">Eric Schmuttenmaer</a>
+(<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>)</p></li><li><p>internals:
+<a href="https://www.flickr.com/photos/thedonquixotic/">David French</a>
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>cut:
+<a href="https://www.flickr.com/photos/span112/">Jinx!</a>
+(<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>)</p></li><li><p>cells:
+<a href="https://www.flickr.com/photos/jonolist/">Jonathan Lin</a>
+(<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>)</p></li><li><p>obsolete:
+<a href="https://www.flickr.com/photos/trevor-king/">Trevor King</a>
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>sign:
+<a href="https://www.flickr.com/photos/duncharris/">Duncan Harris</a>
+(<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>)</p></li></ul></div></section><section id="_rest"><h2>Rest</h2><div class="ulist"><ul><li><p>question-mark:
 <a href="http://milosevicmilos.com/">Milos Milosevic</a>
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>bundles:
+<a href="https://www.flickr.com/photos/dmahendra/">Danumurthi Mahendra</a>
 (<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li></ul></div></section></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script type="text/javascript">// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
 Reveal.initialize({
   // Display controls in the bottom right corner
