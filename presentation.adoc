@@ -654,9 +654,10 @@ contains _all_ JARs on the class path +
 
 === Example
 
-* put all your JARs on the class path
+Put all your JARs on the class path.
 
-TODO: diagram
+image::images/migration-unnamed.png[style="diagram"]
+
 
 === No Access
 
@@ -671,6 +672,12 @@ module advent {
 	requires unnamed;
 }
 ----
+
+
+=== No Access
+
+image::images/migration-unnamed-dependency.png[style="diagram"]
+
 
 
 [data-background="images/golden-gate.jpg"]
@@ -704,7 +711,10 @@ module advent {
 }
 ----
 
-TODO: diagram
+
+=== Example
+
+image::images/migration-automatic.png[style="diagram"]
 
 
 [data-background="images/confusion.jpg"]
@@ -754,6 +764,7 @@ whenever they want
 ++++
 
 TODO: diagram
+////
 
 
 === Top-Down Migration
@@ -776,6 +787,7 @@ unmodularized dependencies +
 ** put others on either path
 
 
+////
 === Top-Down Migration
 
 ++++
@@ -783,6 +795,7 @@ unmodularized dependencies +
 ++++
 
 TODO: diagram
+////
 
 
 === Top-Down Migration
