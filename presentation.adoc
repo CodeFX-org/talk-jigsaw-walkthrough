@@ -554,17 +554,17 @@ image::images/advent-calendar-module-multi.png[style="diagram"]
 <div style="height: 250px;">
 <div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module surprise {
 	<span class="hljs-comment">// requires no other modules</span>
-	exports org.codefx.demo.advent.surprise;
+	exports org.codefx.advent.surprise;
 }</code></pre></div></div>
 <div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module calendar {
 	requires surprise;
-	exports org.codefx.demo.advent.calendar;
+	exports org.codefx.advent.calendar;
 }</code></pre></div></div>
 <div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module factories {
 	requires surprise;
-	exports org.codefx.demo.advent.factories;
+	exports org.codefx.advent.factories;
 }</code></pre></div></div>
-<div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module main {
+<div class="listingblock fragment current-display"><div class="content"><pre class="highlight"><code class="java language-java hljs">module advent {
 	requires calendar;
 	requires factories;
 	requires surprise;
@@ -584,11 +584,11 @@ image::images/advent-calendar-module-multi.png[style="diagram"]
 # First compile/package the other modules
 #   ('surprises', 'calendar', 'factories')
 #   into folder 'mods'.
-# Compile/package 'main':
+# Compile/package 'advent':
 javac -mp mods -d classes/advent ${*.java}
 jar -c --file=mods/advent.jar
-	--main-class=org.codefx.demo.advent.Main
-	${*.java}
+	--main-class=org.codefx.advent.Main
+	${*.class}
 # Launch the application:
 java -mp mods -m advent
 ----
@@ -695,7 +695,7 @@ on the module path.
 
 === Example
 
-* put `guava-19.0.jar` on the class path
+* put `guava-19.0.jar` on the module path
 * then this works:
 [source,java]
 ----
@@ -742,10 +742,11 @@ unmodularized dependencies +
 
 * turn project JARs into modules
 * they still work on the class path
-* clients can move them the module path +
+* clients can move them to the module path +
 whenever they want
 
 
+////
 === Bottom-Up Migration
 
 ++++
@@ -992,8 +993,6 @@ until 2010: CS and Math at http://www.tu-dortmund.de[TU Dortmund]
 // O S G I //
 // ####### //
 
-213
-
 [data-background="images/bundles.jpg"]
 == Jigsaw vs. OSGi
 
@@ -1181,6 +1180,9 @@ https://www.flickr.com/photos/82955120@N05/[Nicolas Raymond]
 * confusion:
 https://www.flickr.com/photos/procsilas/[Procsilas Moscas]
 (https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
+* module diagrams: +
+http://blog.codefx.org/about-nicolai-parlog/[Nicolai Parlog]
+(https://creativecommons.org/licenses/by-nc/4.0/[CC-BY-NC 4.0])
 
 === Compatibility
 
