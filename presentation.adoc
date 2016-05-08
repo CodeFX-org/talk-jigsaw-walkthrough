@@ -66,9 +66,6 @@
 </script>
 ++++
 
-////
-////
-
 
 
 // ################################### //
@@ -530,10 +527,14 @@ java -mp mods -m advent
 // iamge #2: http://yuml.me/edit/b2e21fbf
 ++++
 <div class="imageblock" style="">
-	<div class="content"><img src="images/advent-calendar-structure.png" class="diagram" style="margin: 0; width:75%;">
-</div></div>
+	<div class="content diagram">
+		<img src="images/advent-calendar-structure.png" style="margin: 25px; width:75%;">
+	</div>
+</div>
 <div class="imageblock fragment current-visible" data-fragment-index="0">
-	<div class="content"><img src="images/advent-calendar-module-multi.png" alt="b2e21fbf" class="diagram" style="margin: 0;"></div>
+	<div class="content diagram">
+		<img src="images/advent-calendar-module-multi.png" alt="b2e21fbf" style="margin: 0;">
+	</div>
 </div>
 ++++
 
