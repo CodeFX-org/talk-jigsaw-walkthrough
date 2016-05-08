@@ -21,10 +21,10 @@
 		</div>
 	</div>
 	<div class="participant">
-		<img src="images/logo-jugs.png" class="logo">
+		<img src="images/logo-majug.png" class="logo">
 		<div class="name">
-			<p><a href="http://www.jugs.org">JUG Stuttgart</a></p>
-			<p><a href="https://twitter.com/jug_stuttgart" title="JUG Stuttgart on Twitter">@jug_stuttgart</a></p>
+			<p><a href="http://www.majug.de/">JUG Mannheim</a></p>
+			<p><a href="https://twitter.com/majug" title="JUG Mannheim on Twitter">@majug</a></p>
 		</div>
 	</div>
 </div>
@@ -52,10 +52,10 @@
 		</div>
 	</p></div>
 	<div class="participant">
-		<img src="images/logo-jugs.png" class="logo">
+		<img src="images/logo-majug.png" class="logo">
 		<div class="name"><p>
-			<a href="http://www.jugs.org">JUG Stuttgart</a>
-				/ <a href="https://twitter.com/jug_stuttgart" title="JUG Stuttgart on Twitter">@jug_stuttgart</a>
+			<a href="http://www.majug.de/">JUG Mannheim</a>
+				/ <a href="https://twitter.com/majug" title="JUG Mannheim on Twitter">@majug</a>
 		</p></div>
 	</div>
 </footer>
