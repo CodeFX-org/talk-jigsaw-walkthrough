@@ -8,10 +8,10 @@
 		</div>
 	</div>
 	<div class="participant">
-		<img src="images/logo-jugs.png" class="logo">
+		<img src="images/logo-majug.png" class="logo">
 		<div class="name">
-			<p><a href="http://www.jugs.org">JUG Stuttgart</a></p>
-			<p><a href="https://twitter.com/jug_stuttgart" title="JUG Stuttgart on Twitter">@jug_stuttgart</a></p>
+			<p><a href="http://www.majug.de/">JUG Mannheim</a></p>
+			<p><a href="https://twitter.com/majug" title="JUG Mannheim on Twitter">@majug</a></p>
 		</div>
 	</div>
 </div>
@@ -31,10 +31,10 @@
 		</div>
 	</p></div>
 	<div class="participant">
-		<img src="images/logo-jugs.png" class="logo">
+		<img src="images/logo-majug.png" class="logo">
 		<div class="name"><p>
-			<a href="http://www.jugs.org">JUG Stuttgart</a>
-				/ <a href="https://twitter.com/jug_stuttgart" title="JUG Stuttgart on Twitter">@jug_stuttgart</a>
+			<a href="http://www.majug.de/">JUG Mannheim</a>
+				/ <a href="https://twitter.com/majug" title="JUG Mannheim on Twitter">@majug</a>
 		</p></div>
 	</div>
 </footer>
@@ -107,10 +107,14 @@ on the class path as before</p></li></ul></div>
 <p class="fragment current-visible" data-fragment-index="1">(Still Boring...)</p>
 <aside class="notes"><div class="ulist"><ul><li><p>talk about <code>java.base</code></p></li><li><p>this is a simple module graph</p></li></ul></div></aside></section><section id="_a_single_module_2"><h2>A single module</h2><h3>Readability & Accessibility</h3>
 <div class="imageblock diagram" style=""><div class="content"><img src="images/advent-calendar-readability-accessibility.png" alt="advent calendar readability accessibility"></div></div></section><section id="_multiple_modules"><h2>Multiple Modules</h2><div class="imageblock" style="">
-	<div class="content"><img src="images/advent-calendar-structure.png" class="diagram" style="margin: 0; width:75%;">
-</div></div>
+	<div class="content diagram">
+		<img src="images/advent-calendar-structure.png" style="margin: 25px; width:75%;">
+	</div>
+</div>
 <div class="imageblock fragment current-visible" data-fragment-index="0">
-	<div class="content"><img src="images/advent-calendar-module-multi.png" alt="b2e21fbf" class="diagram" style="margin: 0;"></div>
+	<div class="content diagram">
+		<img src="images/advent-calendar-module-multi.png" alt="b2e21fbf" style="margin: 0;">
+	</div>
 </div>
 <aside class="notes"><div class="ulist"><ul><li><p>this is another module graph</p></li></ul></div></aside></section><section id="_multiple_modules_2"><h2>Multiple Modules</h2><div class="imageblock diagram" style=""><div class="content"><img src="images/advent-calendar-module-multi.png" alt="advent calendar module multi"></div></div>
 <div style="height: 250px;">
@@ -196,10 +200,19 @@ in the JDK / JRE folder?</p></li><li><p>search for casts to <code>URLClassLoader
 <div class="ulist"><ul><li><p>internal APIs</p></li><li><p>split packages</p></li></ul></div></section><section id="_general_advice_ii" data-background="images/sign.jpg"><h2>General Advice II</h2><div class="ulist"><ul><li><p>get your code in shape<br>
 (and prevent relapses)</p></li><li><p>check your dependencies and tools</p></li><li><p>if any are suspicious<br>
 (automatically true for IDEs, build tools):</p><div class="ulist"><ul><li><p>make sure they&#8217;re alive</p></li><li><p>get them up to date!</p></li><li><p>or look for alternatives</p></li></ul></div></li><li><p>get an <a href="https://jdk9.java.net/">EA-build</a> and <strong>try it!</strong></p></li></ul></div></section></section>
-<section id="_questions" data-background="images/question-mark.jpg"><h2>Questions?</h2><h3>Find Me</h3>
-<div class="paragraph"><p><a href="http://codefx.org">codefx.org</a> / <a href="https://twitter.com/nipafx">@nipafx</a> / <a href="https://google.com/+NicolaiParlog">+NicolaiParlog</a></p></div>
+<section id="_questions" data-background="images/question-mark.jpg"><h2>Questions?</h2><div style="float: left;">
+	<img src="http://blog.codefx.org/wp-content/uploads/jmsia-fake-cover.png" width="80%">
+</div>
+<h3>Find Me</h3>
+<div class="paragraph"><p><a href="http://codefx.org">codefx.org</a><br>
+<a href="https://twitter.com/nipafx">@nipafx</a> /
+<a href="https://google.com/+NicolaiParlog">+NicolaiParlog</a></p></div>
 <h3>Hire Me</h3>
-<div class="paragraph"><p>Java 9 Migration &amp; Training</p></div></section>
+<div class="paragraph"><p>Java 9 Migration &amp; Training</p></div>
+<h3>Buy My Book</h3>
+<div class="paragraph"><p><a href="http://blog.codefx.org/java-module-system-in-action/">Not Yet&#8230;&#8203;</a>
+~&gt;
+<a href="http://blog.codefx.org/newsletter/">Subscribe</a></p></div></section>
 <section><section id="_jigsaw_vs_osgi" data-background="images/bundles.jpg"><h2>Jigsaw vs. OSGi</h2><div class="paragraph"><p>OSGi Bundles:</p></div><div class="ulist"><ul><li><p>are JARs with a descriptor (<code>MANIFEST.MF</code>)</p></li><li><p>have a name</p></li><li><p>import package or bundle</p></li><li><p>define public API by exporting packages</p></li></ul></div></section><section id="_jigsaw_vs_osgi_2" data-background="images/bundles.jpg"><h2>Jigsaw vs. OSGi</h2><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:33.3333%"><col style="width:33.3333%"><col style="width:33.3334%"></colgroup><thead><tr><th class="tableblock halign-left valign-top"></th><th class="tableblock halign-left valign-top">Jigsaw</th><th class="tableblock halign-left valign-top">OSGi</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Versioning</strong></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">not at all</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">packages and modules</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Runtime Behavior</strong></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">mostly static</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">dynamic</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Services</strong></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">declarative via <code>ServiceLoader</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">declarative or programmatically;<br>
 more flexible</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Class Loaders</strong></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">operates below</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">one per bundle</p></td></tr></tbody></table></section></section>
 <section><section id="_image_credits"><h2>Image Credits</h2></section><section id="_introduction"><h2>Introduction</h2><div class="ulist"><ul><li><p>puzzle-people:
