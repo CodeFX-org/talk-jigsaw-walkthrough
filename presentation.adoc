@@ -980,14 +980,29 @@ The most relevant for most applications:
 == Questions?
 
 ++++
+<div style="float: left;">
+	<img src="http://blog.codefx.org/wp-content/uploads/jmsia-fake-cover.png" width="80%">
+</div>
+++++
+
+++++
 <h3>Find Me</h3>
 ++++
-http://codefx.org[codefx.org] / https://twitter.com/nipafx[@nipafx] / https://google.com/+NicolaiParlog[+NicolaiParlog]
+http://codefx.org[codefx.org] +
+https://twitter.com/nipafx[@nipafx] /
+https://google.com/+NicolaiParlog[+NicolaiParlog]
 
 ++++
 <h3>Hire Me</h3>
 ++++
 Java 9 Migration & Training
+
+++++
+<h3>Buy My Book</h3>
+++++
+http://blog.codefx.org/java-module-system-in-action/[Not Yet...]
+~>
+http://blog.codefx.org/newsletter/[Subscribe]
 
 ////
 ++++
