@@ -386,10 +386,8 @@ by code in another module if
 === Jigsaw Advent Calendar
 
 ++++
-<h3>A running example</h3>
+<h3>A simple example</h3>
 ++++
-
-All examples are based on this toy project.
 
 Find it https://github.com/CodeFX-org/demo-jigsaw-advent-calendar[on GitHub]!
 
@@ -460,7 +458,7 @@ on the class path as before
 <h3>Modularization</h3>
 ++++
 
-// http://yuml.me/edit/f3ed6b1a
+// http://yuml.me/edit/4b1f89ab
 image::images/advent-calendar-module-single.png[style="diagram"]
 
 [source,java]
@@ -489,7 +487,7 @@ module advent {
 <h3>Readability & Accessibility</h3>
 ++++
 
-// http://yuml.me/edit/6ef759bc
+// http://yuml.me/edit/3144f0af
 image::images/advent-calendar-readability-accessibility.png[style="diagram"]
 
 
@@ -524,7 +522,7 @@ java -mp mods -m advent
 === Multiple Modules
 
 // image #1: taken from "Structure"
-// iamge #2: http://yuml.me/edit/b2e21fbf
+// iamge #2: http://yuml.me/edit/a61aa29b
 ++++
 <div class="imageblock" style="">
 	<div class="content diagram">
@@ -583,7 +581,7 @@ image::images/advent-calendar-module-multi.png[style="diagram"]
 [source,bash]
 ----
 # First compile/package the other modules
-#   ('surprises', 'calendar', 'factories')
+#   ('surprise', 'calendar', 'factories')
 #   into folder 'mods'.
 # Compile/package 'advent':
 javac -mp mods -d classes/advent ${*.java}
