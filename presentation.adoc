@@ -690,7 +690,7 @@ image::images/migration-unnamed-dependency.png[style="diagram"]
 === Definition
 
 An *Automatic Module* +
-is created for each "regular" JAR +
+is created _for each_ "regular" JAR +
 on the module path.
 
 * gets a name based on the file name
@@ -1027,7 +1027,7 @@ OSGi Bundles:
 
 * are JARs with a descriptor (`MANIFEST.MF`)
 * have a name
-* import package or bundle
+* import packages or bundles
 * define public API by exporting packages
 
 
