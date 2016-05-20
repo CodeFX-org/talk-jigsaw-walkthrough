@@ -1184,13 +1184,13 @@ https://www.flickr.com/photos/dps/[David Singleton]
 
 === Java Module System
 
-* puzzle-piece-green:
+* puzzle-piece-green: +
 http://www.stockmonkeys.com/[StockMonkeys.com]
 (https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
 * puzzle-pieces-put-together: +
 http://www.seniorliving.org[Ken Teegardin]
 (https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
-* iceberg:
+* iceberg: +
 https://www.flickr.com/photos/usoceangov/[NOAA's National Ocean Service]
 (https://creativecommons.org/licenses/by/2.0/[CC-BY 2.0])
 * advent-calendar:
@@ -1220,7 +1220,7 @@ http://blog.codefx.org/about-nicolai-parlog/[Nicolai Parlog]
 
 === Compatibility
 
-* broken-glass:
+* broken-glass: +
 https://www.flickr.com/photos/akeg/[Eric Schmuttenmaer]
 (https://creativecommons.org/licenses/by-sa/2.0/[CC-BY-SA 2.0])
 * internals:
