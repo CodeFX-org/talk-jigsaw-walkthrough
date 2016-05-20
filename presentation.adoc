@@ -1,4 +1,4 @@
-= Jigsaw Walkthrough
+= The Java 9 Module System In Action
 :backend: revealjs
 :revealjs_center: true
 :revealjs_theme: nipa-night
@@ -9,6 +9,13 @@
 :revealjs_parallaxBackgroundSize: 3246px 1237px
 :revealjs_transition: slide
 :revealjs_backgroundTransition: fade
+
+++++
+<style>
+.reveal h1 {
+	font-size: 3.5em;
+}</style>
+++++
 
 ++++
 <div class="event">
