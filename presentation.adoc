@@ -28,10 +28,10 @@
 		</div>
 	</div>
 	<div class="participant">
-		<img src="images/logo-majug.png" class="logo">
+		<img src="images/logo-jeeconf.png" class="logo">
 		<div class="name">
-			<p><a href="http://www.majug.de/">JUG Mannheim</a></p>
-			<p><a href="https://twitter.com/majug" title="JUG Mannheim on Twitter">@majug</a></p>
+			<p><a href="http://jeeconf.com/">JEEConf</a></p>
+			<p><a href="https://twitter.com/jeeconf" title="JEEConf on Twitter">@jeeconf</a></p>
 		</div>
 	</div>
 </div>
@@ -59,10 +59,10 @@
 		</div>
 	</p></div>
 	<div class="participant">
-		<img src="images/logo-majug.png" class="logo">
+		<img src="images/logo-jeeconf.png" class="logo">
 		<div class="name"><p>
-			<a href="http://www.majug.de/">JUG Mannheim</a>
-				/ <a href="https://twitter.com/majug" title="JUG Mannheim on Twitter">@majug</a>
+			<a href="http://jeeconf.com/">JEEConf</a>
+				/ <a href="https://twitter.com/jeeconf" title="JEEConf on Twitter">@jeeconf</a>
 		</p></div>
 	</div>
 </footer>
