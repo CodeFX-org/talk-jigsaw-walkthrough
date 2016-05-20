@@ -1,4 +1,8 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Jigsaw Walkthrough</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="reveal.js/css/theme/nipa-night.css" id="theme"><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet"><script type="text/javascript">document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section class="title-slide" data-state="title-slide"><h1>Jigsaw Walkthrough</h1><div class="event">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>The Java 9 Module System In Action</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="reveal.js/css/theme/nipa-night.css" id="theme"><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet"><script type="text/javascript">document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section class="title-slide" data-state="title-slide"><h1>The Java 9 Module System In Action</h1><style>
+.reveal h1 {
+	font-size: 3.5em;
+}</style>
+<div class="event">
 	<div class="participant">
 		<img src="images/logo-nipa.png" class="logo">
 		<div class="name">
@@ -8,10 +12,10 @@
 		</div>
 	</div>
 	<div class="participant">
-		<img src="images/logo-majug.png" class="logo">
+		<img src="images/logo-jeeconf.png" class="logo">
 		<div class="name">
-			<p><a href="http://www.majug.de/">JUG Mannheim</a></p>
-			<p><a href="https://twitter.com/majug" title="JUG Mannheim on Twitter">@majug</a></p>
+			<p><a href="http://jeeconf.com/">JEEConf</a></p>
+			<p><a href="https://twitter.com/jeeconf" title="JEEConf on Twitter">@jeeconf</a></p>
 		</div>
 	</div>
 </div>
@@ -31,10 +35,10 @@
 		</div>
 	</p></div>
 	<div class="participant">
-		<img src="images/logo-majug.png" class="logo">
+		<img src="images/logo-jeeconf.png" class="logo">
 		<div class="name"><p>
-			<a href="http://www.majug.de/">JUG Mannheim</a>
-				/ <a href="https://twitter.com/majug" title="JUG Mannheim on Twitter">@majug</a>
+			<a href="http://jeeconf.com/">JEEConf</a>
+				/ <a href="https://twitter.com/jeeconf" title="JEEConf on Twitter">@jeeconf</a>
 		</p></div>
 	</div>
 </footer>
@@ -228,11 +232,11 @@ more flexible</p></td></tr><tr><td class="tableblock halign-left valign-top"><p 
 <a href="https://www.flickr.com/photos/rogersg/">George Rex</a>
 (<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>)</p></li><li><p>puzzle-cubed:
 <a href="https://www.flickr.com/photos/dps/">David Singleton</a>
-(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li></ul></div></section><section id="_java_module_system"><h2>Java Module System</h2><div class="ulist"><ul><li><p>puzzle-piece-green:
+(<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li></ul></div></section><section id="_java_module_system"><h2>Java Module System</h2><div class="ulist"><ul><li><p>puzzle-piece-green:<br>
 <a href="http://www.stockmonkeys.com/">StockMonkeys.com</a>
 (<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>puzzle-pieces-put-together:<br>
 <a href="http://www.seniorliving.org">Ken Teegardin</a>
-(<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>)</p></li><li><p>iceberg:
+(<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>)</p></li><li><p>iceberg:<br>
 <a href="https://www.flickr.com/photos/usoceangov/">NOAA&#8217;s National Ocean Service</a>
 (<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>advent-calendar:
 <a href="https://www.flickr.com/photos/littlestuffme/">Tina D</a>
@@ -248,7 +252,7 @@ more flexible</p></td></tr><tr><td class="tableblock halign-left valign-top"><p 
 <a href="https://www.flickr.com/photos/procsilas/">Procsilas Moscas</a>
 (<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>)</p></li><li><p>module diagrams:<br>
 <a href="http://blog.codefx.org/about-nicolai-parlog/">Nicolai Parlog</a>
-(<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC 4.0</a>)</p></li></ul></div></section><section id="_compatibility_2"><h2>Compatibility</h2><div class="ulist"><ul><li><p>broken-glass:
+(<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC 4.0</a>)</p></li></ul></div></section><section id="_compatibility_2"><h2>Compatibility</h2><div class="ulist"><ul><li><p>broken-glass:<br>
 <a href="https://www.flickr.com/photos/akeg/">Eric Schmuttenmaer</a>
 (<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>)</p></li><li><p>internals:
 <a href="https://www.flickr.com/photos/thedonquixotic/">David French</a>
