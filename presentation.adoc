@@ -213,9 +213,12 @@ ends with https://www.jcp.org/en/jsr/detail?id=376[JSR 376]
 * *Reliable Configuration*
 * *Strong Encapsulation*
 * Scalable Systems (esp. the JDK)
-* Security
-* Performance
-* Maintainability
+* Security, Performance, Maintainability
+
++++<h3>Non-Goals</h3>+++
+
+* Multiple Versions
+* Version Selection
 
 
 [data-background="images/puzzle-cubed.jpg"]
