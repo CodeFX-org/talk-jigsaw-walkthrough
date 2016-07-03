@@ -790,7 +790,14 @@ unmodularized dependencies +
 * unmodularized dependencies:
 ** require direct ones with automatic name
 ** put direct ones on the module path
-** put others on either path
+** put others on the class path
+
+[NOTE.speaker]
+--
+* only required modules are loaded from the module path
+* ~> automatic modules' dependencies would not be loaded
+* ~> automatic modules' dependencies go on the class path
+--
 
 
 ////
