@@ -29,10 +29,10 @@
 		</div>
 	</div>
 	<div class="participant">
-		<img src="images/logo-jeeconf.png" class="logo">
+		<img src="images/logo-objektforum-ka.png" class="logo" style="padding: 0; height: 70px; background-color: transparent !important; border-color: transparent;">
 		<div class="name">
-			<p><a href="http://jeeconf.com/">JEEConf</a></p>
-			<p><a href="https://twitter.com/jeeconf" title="JEEConf on Twitter">@jeeconf</a></p>
+			<p><a href="https://www.andrena.de/objektforum">Objektforum</a></p>
+			<p><a href="https://twitter.com/objektforum" title="Objektforum on Twitter">@objektforum</a></p>
 		</div>
 	</div>
 </div>
@@ -60,10 +60,10 @@
 		</div>
 	</p></div>
 	<div class="participant">
-		<img src="images/logo-jeeconf.png" class="logo">
+		<img src="images/logo-objektforum-ka.png" class="logo" style="padding: 0; height: 30px; background-color: transparent !important; border-color: transparent;">
 		<div class="name"><p>
-			<a href="http://jeeconf.com/">JEEConf</a>
-				/ <a href="https://twitter.com/jeeconf" title="JEEConf on Twitter">@jeeconf</a>
+			<a href="https://www.andrena.de/objektforum">Objektforum</a> /
+				<a href="https://twitter.com/objektforum" title="Objektforum on Twitter">@objektforum</a>
 		</p></div>
 	</div>
 </footer>
