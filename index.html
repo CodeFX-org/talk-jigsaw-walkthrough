@@ -1,7 +1,8 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>The Java 9 Module System In Action</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="reveal.js/css/theme/nipa-night.css" id="theme"><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet"><script type="text/javascript">document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section class="title-slide" data-state="title-slide"><h1>The Java 9 Module System In Action</h1><style>
 .reveal h1 {
 	font-size: 3.5em;
-}</style>
+}
+</style>
 <div class="event">
 	<div class="participant">
 		<img src="images/logo-nipa.png" class="logo">
@@ -12,10 +13,10 @@
 		</div>
 	</div>
 	<div class="participant">
-		<img src="images/logo-jeeconf.png" class="logo">
+		<img src="images/logo-objektforum-ka.png" class="logo" style="padding: 0; height: 70px; background-color: transparent !important; border-color: transparent;">
 		<div class="name">
-			<p><a href="http://jeeconf.com/">JEEConf</a></p>
-			<p><a href="https://twitter.com/jeeconf" title="JEEConf on Twitter">@jeeconf</a></p>
+			<p><a href="https://www.andrena.de/objektforum">Objektforum</a></p>
+			<p><a href="https://twitter.com/objektforum" title="Objektforum on Twitter">@objektforum</a></p>
 		</div>
 	</div>
 </div>
@@ -35,10 +36,10 @@
 		</div>
 	</p></div>
 	<div class="participant">
-		<img src="images/logo-jeeconf.png" class="logo">
+		<img src="images/logo-objektforum-ka.png" class="logo" style="padding: 0; height: 30px; background-color: transparent !important; border-color: transparent;">
 		<div class="name"><p>
-			<a href="http://jeeconf.com/">JEEConf</a>
-				/ <a href="https://twitter.com/jeeconf" title="JEEConf on Twitter">@jeeconf</a>
+			<a href="https://www.andrena.de/objektforum">Objektforum</a> /
+				<a href="https://twitter.com/objektforum" title="Objektforum on Twitter">@objektforum</a>
 		</p></div>
 	</div>
 </footer>
@@ -53,7 +54,9 @@
 <aside class="notes"><div class="ulist"><ul><li><p>graph is gone</p></li><li><p>"modularity erasure"</p></li></ul></div></aside></section><section data-state="empty" data-background="images/ball-of-mud-2.jpg"></section><section id="_consequences" data-background="images/jar-hell.jpg"><h2>Consequences</h2><div class="ulist"><ul><li><p><a href="http://blog.codefx.org/java/jar-hell/">JAR hell</a></p><div class="ulist"><ul><li><p>unexpressed, transitive dependencies</p></li><li><p>shadowing, version conflicts</p></li><li><p>complex class loading</p></li></ul></div></li><li><p>slow</p></li><li><p>unsecure</p></li><li><p>maintenance nightmare</p></li></ul></div></section></section>
 <section><section id="_project_jigsaw"><h2>Project Jigsaw</h2><h3>Teaching the JVM about that graph</h3><aside class="notes"><div class="ulist"><ul><li><p>modularity is the keyword</p></li></ul></div></aside></section><section id="_quick_history"><h2>Quick History</h2><div class="dlist"><dl><dt class="hdlist1">2005</dt><dd><p>first discussions about modularity in JDK</p></dd><dt class="hdlist1">2008</dt><dd><p>Project Jigsaw is created</p></dd><dt class="hdlist1">2011-2014</dt><dd><p>exploratory phase;
 ends with <a href="https://www.jcp.org/en/jsr/detail?id=376">JSR 376</a></p></dd><dt class="hdlist1">2015</dt><dd><p>prototype is released</p></dd><dt class="hdlist1">2017</dt><dd><p>Java 9 gets released with Jigsaw</p></dd></dl></div>
-<aside class="notes"><div class="ulist"><ul><li><p>2006: Java 6</p></li><li><p>2008:</p><div class="ulist"><ul><li><p>to create a simple module system</p></li><li><p>just for the JDK</p></li><li><p>for Java 7</p></li><li><p>"in the next year or so" (<a href="http://mreinhold.org/blog/jigsaw">Reinhold</a>)</p></li></ul></div></li><li><p>2010: Oracle aquires Sun, Jigsaw is halted</p></li><li><p>2011: Jigsaw gets fully staffed</p></li><li><p>2011: Java 7</p></li><li><p>2014: Java 8</p></li><li><p>JSR 376: Java Platform Module System</p></li></ul></div></aside></section><section id="_disclaimer_call_to_arms" data-background="images/flag-amsterdam.jpg"><h2>Disclaimer / Call to arms</h2><div class="ulist"><ul><li><p>all is based on a prototype</p></li><li><p>everything can change</p></li><li><p><strong>this is the time for community feedback</strong></p></li></ul></div></section><section id="_goals"><h2>Goals</h2><div class="ulist"><ul><li><p><strong>Reliable Configuration</strong></p></li><li><p><strong>Strong Encapsulation</strong></p></li><li><p>Scalable Systems (esp. the JDK)</p></li><li><p>Security</p></li><li><p>Performance</p></li><li><p>Maintainability</p></li></ul></div></section><section id="_means" data-background="images/puzzle-cubed.jpg"><h2>Means</h2><div class="paragraph"><p>Introducing modules, which</p></div>
+<aside class="notes"><div class="ulist"><ul><li><p>2006: Java 6</p></li><li><p>2008:</p><div class="ulist"><ul><li><p>to create a simple module system</p></li><li><p>just for the JDK</p></li><li><p>for Java 7</p></li><li><p>"in the next year or so" (<a href="http://mreinhold.org/blog/jigsaw">Reinhold</a>)</p></li></ul></div></li><li><p>2010: Oracle aquires Sun, Jigsaw is halted</p></li><li><p>2011: Jigsaw gets fully staffed</p></li><li><p>2011: Java 7</p></li><li><p>2014: Java 8</p></li><li><p>JSR 376: Java Platform Module System</p></li></ul></div></aside></section><section id="_disclaimer_call_to_arms" data-background="images/flag-amsterdam.jpg"><h2>Disclaimer / Call to arms</h2><div class="ulist"><ul><li><p>all is based on a prototype</p></li><li><p>everything can change</p></li><li><p><strong>this is the time for community feedback</strong></p></li></ul></div></section><section id="_goals"><h2>Goals</h2><div class="ulist"><ul><li><p><strong>Reliable Configuration</strong></p></li><li><p><strong>Strong Encapsulation</strong></p></li><li><p>Scalable Systems (esp. the JDK)</p></li><li><p>Security, Performance, Maintainability</p></li></ul></div>
+<div class="paragraph"><p><h3>Non-Goals</h3></p></div>
+<div class="ulist"><ul><li><p>Multiple Versions</p></li><li><p>Version Selection</p></li></ul></div></section><section id="_means" data-background="images/puzzle-cubed.jpg"><h2>Means</h2><div class="paragraph"><p>Introducing modules, which</p></div>
 <div class="ulist"><ul><li><p>have a name</p></li><li><p>express dependencies</p></li><li><p>encapsulate internals</p></li></ul></div>
 <div class="paragraph"><p>Everything else follows from here!</p></div></section><section id="_concepts_features"><h2>Concepts &amp; Features</h2><ul>
 	<li><p>Modules, Readability, Accessibility</p></li>
@@ -89,7 +92,8 @@ ends with <a href="https://www.jcp.org/en/jsr/detail?id=376">JSR 376</a></p></dd
 <div class="paragraph"><p>It is the basis for <strong>Strong Encapsulation</strong>.</p></div></section><section id="_definition_3"><h2>Definition</h2><div class="paragraph"><p>A type in one module is only accessible<br>
 by code in another module if</p></div>
 <div class="ulist"><ul><li><p>the type is public</p></li><li><p>the package is exported</p></li><li><p>the second module reads the first</p></li></ul></div></section><section id="_strong_encapsulation"><h2>Strong Encapsulation</h2><div class="ulist"><ul><li><p><code>public</code> is no longer public</p></li><li><p>even reflection <a href="http://mail.openjdk.java.net/pipermail/jpms-spec-observers/2015-September/000122.html">doesn&#8217;t work</a></p></li><li><p>command line provides escape hatches</p></li></ul></div></section><section id="_consequences_2"><h2>Consequences</h2><div class="ulist"><ul><li><p>great boost for maintainability</p></li><li><p>also the major reason for community unrest</p></li><li><p>critical APIs might survive until Java 10<br>
-(e.g. <code>sun.misc.Unsafe</code>&#8201;&#8212;&#8201;see <a href="http://openjdk.java.net/jeps/260">JEP 260</a>)</p></li></ul></div></section><section id="_jigsaw_advent_calendar" data-background="images/advent-calendar.jpg"><h2>Jigsaw Advent Calendar</h2><h3>A simple example</h3>
+(e.g. <code>sun.misc.Unsafe</code>&#8201;&#8212;&#8201;see <a href="http://openjdk.java.net/jeps/260">JEP 260</a>)</p></li><li><p>life might get tougher for reflection-based<br>
+libraries and frameworks</p></li></ul></div></section><section id="_jigsaw_advent_calendar" data-background="images/advent-calendar.jpg"><h2>Jigsaw Advent Calendar</h2><h3>A simple example</h3>
 <div class="paragraph"><p>Find it <a href="https://github.com/CodeFX-org/demo-jigsaw-advent-calendar">on GitHub</a>!</p></div></section><section id="_structure"><h2>Structure</h2><div class="imageblock diagram" style=""><div class="content"><img src="images/advent-calendar-structure.png" alt="advent calendar structure"></div></div></section><section id="_code"><h2>Code</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="java language-java">public static void main(String[] args) {
 	List&lt;SurpriseF_&gt; fac = asList(
 		new ChocolateF_(), new QuoteF_());
@@ -178,7 +182,8 @@ unmodularized dependencies<br>
 whenever they want</p></li></ul></div></section><section id="_top_down_migration"><h2>Top-Down Migration</h2><div class="paragraph"><p>Required for Projects <strong>with</strong><br>
 unmodularized dependencies<br>
 (applications).</p></div>
-<div class="ulist"><ul><li><p>turn project JARs into modules</p></li></ul></div></section><section id="_top_down_migration_2"><h2>Top-Down Migration</h2><div class="ulist"><ul><li><p>modularized dependencies:</p><div class="ulist"><ul><li><p>require direct ones</p></li><li><p>put all on the module path</p></li></ul></div></li><li><p>unmodularized dependencies:</p><div class="ulist"><ul><li><p>require direct ones with automatic name</p></li><li><p>put direct ones on the module path</p></li><li><p>put others on either path</p></li></ul></div></li></ul></div></section><section id="_top_down_migration_3"><h2>Top-Down Migration</h2><div class="paragraph"><p>When dependencies get modularized:</p></div>
+<div class="ulist"><ul><li><p>turn project JARs into modules</p></li></ul></div></section><section id="_top_down_migration_2"><h2>Top-Down Migration</h2><div class="ulist"><ul><li><p>modularized dependencies:</p><div class="ulist"><ul><li><p>require direct ones</p></li><li><p>put all on the module path</p></li></ul></div></li><li><p>unmodularized dependencies:</p><div class="ulist"><ul><li><p>require direct ones with automatic name</p></li><li><p>put direct ones on the module path</p></li><li><p>put others on the class path</p></li></ul></div></li></ul></div>
+<aside class="notes"><div class="ulist"><ul><li><p>only required modules are loaded from the module path</p></li><li><p>~&gt; automatic modules' dependencies would not be loaded</p></li><li><p>~&gt; automatic modules' dependencies go on the class path</p></li></ul></div></aside></section><section id="_top_down_migration_3"><h2>Top-Down Migration</h2><div class="paragraph"><p>When dependencies get modularized:</p></div>
 <div class="ulist"><ul><li><p>hopefully the name didn&#8217;t change</p></li><li><p>if they are already on the module path,<br>
 nothing changes</p></li><li><p>otherwise move them there</p></li><li><p>check their dependencies</p></li></ul></div></section></section>
 <section><section id="_compatibility"><h2>Compatibility</h2><h3>What to look out for<br>when running on JDK 9</h3></section><section id="_break_stuff" data-background="images/broken-glass.jpg"><h2>Break Stuff</h2><div class="paragraph"><p>Some internal changes can
