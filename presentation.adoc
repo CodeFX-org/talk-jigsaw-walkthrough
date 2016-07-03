@@ -14,7 +14,8 @@
 <style>
 .reveal h1 {
 	font-size: 3.5em;
-}</style>
+}
+</style>
 ++++
 
 ++++
