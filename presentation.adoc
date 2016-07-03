@@ -389,7 +389,8 @@ by code in another module if
 * also the major reason for community unrest
 * critical APIs might survive until Java 10 +
 (e.g. `sun.misc.Unsafe` -- see http://openjdk.java.net/jeps/260[JEP 260])
-
+* life might get tougher for reflection-based +
+libraries and frameworks
 
 
 [data-background="images/advent-calendar.jpg"]
