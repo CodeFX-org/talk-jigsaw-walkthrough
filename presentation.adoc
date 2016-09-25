@@ -21,7 +21,7 @@
 ++++
 <div class="event">
 	<div class="participant">
-		<img src="images/logo-nipa.png" class="logo">
+		<img src="images/logo-nipa.jpg" class="logo">
 		<div class="name">
 			<p>Nicolai Parlog</p>
 			<p><a href="http://codefx.org">codefx.org</a>
@@ -52,7 +52,7 @@
 ++++
 <footer>
 	<div class="participant">
-		<img src="images/logo-nipa.png" class="logo">
+		<img src="images/logo-nipa.jpg" class="logo">
 		<div class="name"><p>
 			Nicolai Parlog
 			/ <a href="http://codefx.org">codefx.org</a>
