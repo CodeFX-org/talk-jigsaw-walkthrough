@@ -1012,16 +1012,14 @@ https://twitter.com/nipafx[@nipafx] /
 https://google.com/+NicolaiParlog[+NicolaiParlog]
 
 ++++
-<h3>Hire Me</h3>
+<h3>Want More?</h3>
 ++++
-Java 9 Migration & Training
+2-day course with 42talents +
+Zürich, 20.04. - 21.04.2017 +
+~> http://42talents.com/training/2017/04/20/Java-9/[register]
 
-++++
-<h3>Buy My Book</h3>
-++++
-http://blog.codefx.org/java-module-system-in-action/[Not Yet...]
-~>
-http://blog.codefx.org/newsletter/[Subscribe]
+or buy http://blog.codefx.org/java-module-system-in-action/[my book] +
+~> http://blog.codefx.org/newsletter/[subscribe]
 
 ////
 ++++
