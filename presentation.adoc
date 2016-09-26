@@ -204,9 +204,10 @@ ends with https://www.jcp.org/en/jsr/detail?id=376[JSR 376]
 [data-background="images/flag-amsterdam.jpg"]
 === Disclaimer / Call to arms
 
-* all is based on a prototype
-* everything can change
-* *this is the time for community feedback*
+* this is based on early access builds
+* some things can still change
+* *time for community feedback +
+is running out*
 
 
 === Goals
@@ -244,7 +245,7 @@ Everything else follows from here!
 	<li class="fragment dim" data-fragment-index="1"><p>Services</p></li>
 	<li><p>Unnamed Modules, Automatic Modules</p></li>
 	<li class="fragment dim" data-fragment-index="1"><p>Reflection, Layers</p></li>
-	<li class="fragment dim" data-fragment-index="1"><p>Runtime Images</p></li>
+	<li class="fragment dim" data-fragment-index="1"><p>Run-time Images</p></li>
 </ul>
 ++++
 
@@ -334,7 +335,7 @@ we say
 --
 * Implied Readability also leads to "A reads B"
 * the first two are always true
-* the last two materialize at runtime
+* the last two materialize at run time
 --
 
 
@@ -854,11 +855,12 @@ http://openjdk.java.net/jeps/261[JEP 261] contains a list of risks.
 [data-background=images/internals.jpg]
 === Internal APIs
 
-* internal APIs disappear:
+* internal APIs are:
 ** all in `sun.*`
 ** most in `com.sun` +
 (unless marked `@jdk.Exported`)
-* critical APIs might survive until Java 10 +
+* most if that will be encapsulated
+* critical APIs will survive until Java 10 +
 (e.g. `sun.misc.Unsafe` -- see http://openjdk.java.net/jeps/260[JEP 260])
 * six methods adding/removing +
 `PropertyChangeListener` got removed
@@ -930,7 +932,7 @@ split packages on the class path will be inaccessible
 * internal JARs are gone (e.g. `rt.jar`, `tools.jar`)
 * JARs are now JMODs
 * application class loader is no `URLClassLoader`
-* new URL schema for runtime image content
+* new URL schema for run-time image content
 
 
 === What to look for?
@@ -1063,7 +1065,7 @@ OSGi Bundles:
 |not at all
 |packages and modules
 
-|Runtime Behavior
+|Run-time Behavior
 |mostly static
 |dynamic
 
