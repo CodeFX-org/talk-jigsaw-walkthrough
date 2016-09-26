@@ -1000,7 +1000,7 @@ The most relevant for most applications:
 
 ++++
 <div style="float: left;">
-	<img src="http://blog.codefx.org/wp-content/uploads/jmsia-fake-cover.png" width="80%">
+	<img src="images/jmsia-cover.png" width="80%">
 </div>
 ++++
 
