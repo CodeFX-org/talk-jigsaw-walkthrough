@@ -857,13 +857,14 @@ http://openjdk.java.net/jeps/261[JEP 261] contains a list of risks.
 
 * internal APIs are:
 ** all in `sun.*`
-** most in `com.sun` +
+** most in `com.sun.*` +
 (unless marked `@jdk.Exported`)
 * most if that will be encapsulated
 * critical APIs will survive until Java 10 +
 (e.g. `sun.misc.Unsafe` -- see http://openjdk.java.net/jeps/260[JEP 260])
-* six methods adding/removing +
-`PropertyChangeListener` got removed
+* six deprecated methods adding/removing +
+`PropertyChangeListener` got removed +
+from `LogManager` and `Pack200`
 
 
 === What to look for?
