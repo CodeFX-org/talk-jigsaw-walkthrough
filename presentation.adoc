@@ -899,6 +899,8 @@ The current implementation is even stricter:
 
 * no two modules must contain +
 the same package (exported or not)
+* split packages on the class path +
+will be inaccessible
 
 
 === Examples
@@ -914,8 +916,6 @@ the same package (exported or not)
 * search your code and dependencies +
 for `java(x)` packages (`jdeps` can help)
 * no tool support (http://mail.openjdk.java.net/pipermail/jigsaw-dev/2015-November/005227.html[yet?])
-* Note: +
-split packages on the class path will be inaccessible
 
 
 === What to do?
