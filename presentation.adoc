@@ -985,7 +985,7 @@ The most relevant for most applications:
 * if any are suspicious +
 (automatically true for IDEs, build tools):
 ** make sure they're alive
-** get them up to date!
+** *get them up to date!*
 ** or look for alternatives
 * get an https://jdk9.java.net/[EA-build] and *try it!*
 
