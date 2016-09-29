@@ -997,11 +997,11 @@ The most relevant for most applications:
 
 
 [data-background="images/question-mark.jpg"]
-== Questions?
+== About
 
 ++++
 <div style="float: left;">
-	<img src="images/jmsia-cover.png" width="80%">
+	<img src="images/jmsia-cover.png" width="85%">
 </div>
 ++++
 
@@ -1009,6 +1009,7 @@ The most relevant for most applications:
 <h3>Find Me</h3>
 ++++
 http://codefx.org[codefx.org] +
+https://sitepoint.com/java[sitepoint.com/java] +
 https://twitter.com/nipafx[@nipafx] /
 https://google.com/+NicolaiParlog[+NicolaiParlog]
 
@@ -1019,7 +1020,7 @@ https://google.com/+NicolaiParlog[+NicolaiParlog]
 Zürich, 20.04. - 21.04.2017 +
 ~> http://42talents.com/training/2017/04/20/Java-9/[register]
 
-or buy http://blog.codefx.org/java-module-system-in-action/[my book] +
+or buy http://blog.codefx.org/java-module-system-in-action/[my book]
 ~> http://blog.codefx.org/newsletter/[subscribe]
 
 ////
