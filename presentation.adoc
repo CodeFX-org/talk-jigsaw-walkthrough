@@ -29,10 +29,10 @@
 		</div>
 	</div>
 	<div class="participant">
-		<img src="images/logo-jug-ch.gif" class="logo">
+		<img src="images/logo-javaforumnord.png" class="logo">
 		<div class="name">
-			<p><a href="http://www.jug.ch/">JUG Switzerland</a></p>
-			<p><a href="https://twitter.com/jugcg" title="Objektforum on Twitter">@jugch</a></p>
+			<p><a href="http://javaforumnord.de">Java Forum Nord</a></p>
+			<p><a href="https://twitter.com/javaforumnord" title="Java Forum Nord on Twitter">@javaforumnord</a></p>
 		</div>
 	</div>
 </div>
@@ -60,10 +60,10 @@
 		</div>
 	</p></div>
 	<div class="participant">
-		<img src="images/logo-jug-ch.gif" class="logo">
+		<img src="images/logo-javaforumnord.png" class="logo">
 		<div class="name"><p>
-			<a href="http://www.jug.ch/">JUG Switzerland</a> /
-				<a href="https://twitter.com/jugch" title="JUG CH on Twitter">@jugch</a>
+			<a href="http://javaforumnord.de">Java Forum Nord</a> /
+				<a href="https://twitter.com/javaforumnord" title="Java Forum Nord on Twitter">@javaforumnord</a>
 		</p></div>
 	</div>
 </footer>
