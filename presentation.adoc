@@ -522,7 +522,7 @@ jar -c --file=mods/advent.jar
 	${*.class}
 # run by specifying a module path
 #	and a module to run (by name):
-java -mp mods -m advent
+java -p mods -m advent
 ----
 
 [NOTE.speaker]
@@ -597,12 +597,12 @@ image::images/advent-calendar-module-multi.png[style="diagram"]
 #   ('surprise', 'calendar', 'factories')
 #   into folder 'mods'.
 # Compile/package 'advent':
-javac -mp mods -d classes/advent ${*.java}
+javac -p mods -d classes/advent ${*.java}
 jar -c --file=mods/advent.jar
 	--main-class=org.codefx.advent.Main
 	${*.class}
 # Launch the application:
-java -mp mods -m advent
+java -p mods -m advent
 ----
 
 
