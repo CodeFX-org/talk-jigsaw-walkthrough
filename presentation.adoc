@@ -29,10 +29,10 @@
 		</div>
 	</div>
 	<div class="participant">
-		<img src="images/logo-javaforumnord.png" class="logo">
+		<img src="images/logo-javabin.png" class="logo">
 		<div class="name">
-			<p><a href="http://javaforumnord.de">Java Forum Nord</a></p>
-			<p><a href="https://twitter.com/javaforumnord" title="Java Forum Nord on Twitter">@javaforumnord</a></p>
+			<p><a href="https://www.meetup.com/javaBin-Trondheim/">javaBin</a></p>
+			<p><a href="https://twitter.com/javabin" title="javaBin on Twitter">@javabin</a></p>
 		</div>
 	</div>
 </div>
@@ -60,10 +60,10 @@
 		</div>
 	</p></div>
 	<div class="participant">
-		<img src="images/logo-javaforumnord.png" class="logo">
+		<img src="images/logo-javabin.png" class="logo">
 		<div class="name"><p>
-			<a href="http://javaforumnord.de">Java Forum Nord</a> /
-				<a href="https://twitter.com/javaforumnord" title="Java Forum Nord on Twitter">@javaforumnord</a>
+			<a href="https://www.meetup.com/javaBin-Trondheim/">javaBin Trondheim</a> /
+				<a href="https://twitter.com/javabin" title="javaBin on Twitter">@javabin</a>
 		</p></div>
 	</div>
 </footer>
