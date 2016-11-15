@@ -920,7 +920,7 @@ from `LogManager` and `Pack200`
 
 * use https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html[`jdeps`] (preferably from JDK 9)
 ** either manually: +
-`jdeps -jdkinternals {*.class/*.jar}`
+`jdeps --jdk-internals {*.class/*.jar}`
 ** or as part of your build (e.g. with https://github.com/CodeFX-org/JDeps-Maven-Plugin[JDeps Mvn])
 * look for reflection, especially
 ** `Class::forName`
@@ -933,7 +933,7 @@ from `LogManager` and `Pack200`
 . contact library developers
 . look for alternatives +
 (in the JDK or other libraries)
-. consider command line flag `-XaddExports`
+. consider command line flag `--add-exports`
 . turn to the Jigsaw mailing lists
 
 
@@ -972,7 +972,7 @@ for `java(x)` packages (`jdeps` can help)
 . is the split on purpose / necessary?
 . find other ways to solve the problem
 . upgradeable modules to replace run-time modules
-. command line `-Xpatch` to add individual classes
+. command line `--patch-module` to add individual classes
 
 
 [data-background=images/cells.jpg]
