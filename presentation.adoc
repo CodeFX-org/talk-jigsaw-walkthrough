@@ -29,10 +29,9 @@
 		</div>
 	</div>
 	<div class="participant">
-		<img src="images/logo-javabin.png" class="logo">
+		<img src="images/logo-modconf.png" class="logo">
 		<div class="name">
-			<p><a href="https://www.meetup.com/javaBin-Trondheim/">javaBin</a></p>
-			<p><a href="https://twitter.com/javabin" title="javaBin on Twitter">@javabin</a></p>
+			<p><a href="https://web.liferay.com/web/events2016/modconf">MODCONF</a></p>
 		</div>
 	</div>
 </div>
@@ -60,10 +59,9 @@
 		</div>
 	</p></div>
 	<div class="participant">
-		<img src="images/logo-javabin.png" class="logo">
+		<img src="images/logo-modconf.png" class="logo">
 		<div class="name"><p>
-			<a href="https://www.meetup.com/javaBin-Trondheim/">javaBin Trondheim</a> /
-				<a href="https://twitter.com/javabin" title="javaBin on Twitter">@javabin</a>
+			<a href="https://web.liferay.com/web/events2016/modconf">MODCONF</a>
 		</p></div>
 	</div>
 </footer>
