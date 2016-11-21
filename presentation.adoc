@@ -605,57 +605,6 @@ java -p mods -m advent
 
 
 
-// ####### //
-// O S G I //
-// ####### //
-
-== What About OSGi?
-
-++++
-<h3>Brief comparison<br>of Jigsaw and OSGi</h3>
-++++
-
-
-[data-background="images/bundles.jpg"]
-=== Jigsaw vs. OSGi
-
-OSGi Bundles:
-
-* are JARs with a descriptor (`MANIFEST.MF`)
-* have a name
-* import packages or bundles
-* define public API by exporting packages
-
-
-[data-background="images/bundles.jpg"]
-=== Jigsaw vs. OSGi
-
-[cols="s,d,d", options="header"]
-|===
-|
-|Jigsaw
-|OSGi
-
-|Versioning
-|not at all
-|packages and modules
-
-|Run-time Behavior
-|mostly static
-|dynamic
-
-|Services
-|declarative via `ServiceLoader`
-|declarative or programmatically; +
-more flexible
-
-|Class Loaders
-|operates below
-|one per bundle
-|===
-
-
-
 // ################# //
 // M I G R A T I O N //
 // ################# //
@@ -1083,6 +1032,57 @@ since 2014: Java developer at http://www.disy.net/en/welcome.html[Disy]
 
 until 2010: CS and Math at http://www.tu-dortmund.de[TU Dortmund]
 ////
+
+
+
+// ####### //
+// O S G I //
+// ####### //
+
+== What About OSGi?
+
+++++
+<h3>Brief comparison<br>of Jigsaw and OSGi</h3>
+++++
+
+
+[data-background="images/bundles.jpg"]
+=== Jigsaw vs. OSGi
+
+OSGi Bundles:
+
+* are JARs with a descriptor (`MANIFEST.MF`)
+* have a name
+* import packages or bundles
+* define public API by exporting packages
+
+
+[data-background="images/bundles.jpg"]
+=== Jigsaw vs. OSGi
+
+[cols="s,d,d", options="header"]
+|===
+|
+|Jigsaw
+|OSGi
+
+|Versioning
+|not at all
+|packages and modules
+
+|Run-time Behavior
+|mostly static
+|dynamic
+
+|Services
+|declarative via `ServiceLoader`
+|declarative or programmatically; +
+more flexible
+
+|Class Loaders
+|operates below
+|one per bundle
+|===
 
 
 
